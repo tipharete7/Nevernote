@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="larg-12 columns">
+        <h1>Notes</h1><br>
+    
+        <form #myForm="ngForm" (ngSubmit)="myForm.form.valid && createNote()">
+          <input type="text" placeholder="title" name="title" [(ngModel)]="model.title" #noteTitle="ngModel"
+            [ngClass]="{'is-invalid' : myForm.submitted && noteTitle.invalid}"  maxlength="40" required>
+    
+          <div *ngIf="myForm.submitted && noteTitle.invalid">
+            <p *ngIf="noteTitle.errors?.required" class="invalid-input">Note title is obligatory.</p>
+          </div>
+          
+          <textarea placeholder="content" name="content" [(ngModel)]="model.content" #noteContent="ngModel"
+            [ngClass]="{'is-invalid' : myForm.submitted && noteContent.invalid}" rows="3" maxlength="200" required></textarea>
+          
+            <div *ngIf="myForm.submitted && noteContent.invalid">
+              <p *ngIf="noteContent.errors?.required" class="invalid-input">Note content is obligatory.</p>
+            </div>
+    
+          <button id="btn" type="submit">Add Note</button>
+        </form>
+      </div>  
+  </div>
+
+

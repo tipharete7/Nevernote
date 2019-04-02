@@ -1,0 +1,23 @@
+input, textarea {
+    width:90%;
+    background-color:#52595B !important;
+    border: none !important;
+    padding:24px;
+    box-shadow:none !important;
+    color:#fff;
+}
+
+input::placeholder, textarea::placeholder {
+    color:#95989A;
+}
+
+#btn {
+    display:block;
+    width:90%;
+    background:#1ad39a;
+    padding:15px 0;
+    margin-top:20px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:bold;
+}

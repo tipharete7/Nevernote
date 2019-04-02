@@ -1,0 +1,7 @@
+{
+    "typescript.check.npmIsInstalled": false,
+    "typescript.reportStyleChecksAsWarnings": false,
+    "javascript.validate.enable": false,
+    "scss.validate": false,
+    "typescript.validate.enable": false
+}
