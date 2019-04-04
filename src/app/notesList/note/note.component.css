@@ -1,0 +1,35 @@
+#noteItem {
+    background-color: #2A3031;
+    margin-top: 30px;
+}
+
+#noteItem input {
+    width: 91%;
+    background: transparent;
+    border: none;
+    color:whitesmoke;
+}
+
+#noteItem textarea {
+    margin-top: 10%;
+    width: 95%;
+    background: transparent;
+    border: none;
+    resize: none;
+    color:whitesmoke;
+    outline: none;
+}
+
+#noteItem strong {
+    font-size: small;
+}
+
+
+#noteItem a {
+    visibility: hidden;
+    cursor: pointer;
+}
+
+#noteItem:hover a {
+    visibility: visible;
+}

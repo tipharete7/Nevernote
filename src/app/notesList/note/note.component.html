@@ -1,0 +1,21 @@
+<!--ngContainer-->
+<div id="noteItem" class="card box-shadow">
+    <div class="card-body">
+        <div>
+            <input type="text"
+                   [(ngModel)]="note.title"
+                   (change)="updateNote()"
+                   class="input-label-lg"
+                   maxlength="18"/>
+            <a (click)="deleteNote()" class="pull-right text-danger">
+              <i class="fa fa-trash-o"></i>
+            </a>
+    </div>
+
+    <textarea class="input-label"  
+     rows="6"
+    [(ngModel)]="note.content"
+    (change)="updateNote()"></textarea>
+    <strong class="text-info">{{note.lastModificationDate | date:'dd-MM-yyy HH:mm'}}</strong>
+  </div>
+  

@@ -13,6 +13,7 @@ export const router: Routes = [
  {path: 'newNote', component: NewNoteComponent },
  {path: 'notes', component: NotesComponent },
  {path: 'notebooks', component: NoteBooksComponent },
+ { path: '**', component: NotesComponent }
 ]
 
 

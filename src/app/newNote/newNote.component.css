@@ -1,23 +1,42 @@
-input, textarea {
-    width:90%;
-    background-color:#52595B !important;
-    border: none !important;
-    padding:24px;
-    box-shadow:none !important;
-    color:#fff;
-}
-
 input::placeholder, textarea::placeholder {
-    color:#95989A;
+    color: #95989A;
 }
 
-#btn {
-    display:block;
-    width:90%;
-    background:#1ad39a;
-    padding:15px 0;
-    margin-top:20px;
-    cursor:pointer;
-    color:#fff;
-    font-weight:bold;
+input {
+
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: black;
+    margin-bottom: 20%;
+    padding: 24px;
+    color: #fff;
+    background-color: #52595B !important;
+}
+
+textarea {
+    margin-bottom: 20%;
+    resize: none;
+    outline: none;
+    border: none !important;
+    color: #fff;
+    background-color: #52595B !important;
+}
+
+button {
+    display: block;
+    width: 40%;
+    background: #1ad39a;
+    margin-top: 20%;
+    cursor: pointer;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+h3 {
+    color: whitesmoke;
+    margin-bottom: 20%;
+}
+
+.invalid-input {
+    color: red;
 }

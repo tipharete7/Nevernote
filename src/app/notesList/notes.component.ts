@@ -12,32 +12,33 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css'],
-  animations : [
-    trigger ('notesAnim', [
+  animations: [
+    trigger('notesAnim', [
       state('active', style({
-        opacity : '1'
+        opacity: '1'
       })),
-      transition ('void => *', [
-        style({transform : 'translateX(-30px)', opacity: '0'}),
+      transition('void => *', [
+        style({ transform: 'translateX(-30px)', opacity: '0' }),
         animate('750ms ease-in-out')
       ]),
-      transition ('* => void', [
-        animate('400ms ease-in-out', style({transform: 'translateX(-30px)', opacity:'0'}))
+      transition('* => void', [
+        animate('400ms ease-in-out', style({ transform: 'translateX(-30px)', opacity: '0' }))
       ])
     ])
   ]
 })
-export class NotesComponent implements OnInit{ 
+export class NotesComponent implements OnInit {
 
-  model : Note = {
-    id : "",
+  model: Note = {
+    id: "",
     title: "",
     content: "",
-    date: ""
+    creationDate: "",
+    lastModificationDate : ""
   }
 
   notes: Note[] = [];
-  selectedNote : Note;
+  selectedNote: Note;
 
   constructor(private router: Router, private noteService: NoteService) {
   }
@@ -47,37 +48,34 @@ export class NotesComponent implements OnInit{
   }
 
   getNotes() {
-      this.noteService.getNotes().subscribe(
-        data  => { this.notes = data },
-        error => { alert("getNotes() error" + error) });   
+    this.noteService.getNotes().subscribe(
+      data => { this.notes = data },
+      error => { alert("An error has occured while getting list of notes" + error) });
   }
 
- 
-  deleteNote(note : Note){
-    if(confirm("Etes-vous sûr de supprimer cette note ?")){ //https://www.youtube.com/watch?v=L7mrAYsh0-0
-      this.noteService.deleteNote(note).subscribe( data => {
-          this.notes = this.notes.filter(n => n !== note);
-        }); 
+
+  deleteNote(note: Note) {
+    if (confirm("Etes-vous sûr de supprimer cette note ?")) { // dialog https://www.youtube.com/watch?v=L7mrAYsh0-0
+      this.noteService.deleteNote(note.id).subscribe(
+        data => {
+          let indexOfNote = this.notes.indexOf(note);
+          this.notes.splice(indexOfNote, 1);
+        },
+        err => { alert("An error has occurred while deleting the note"); }
+      );
     }
-  }
+}
 
-  openUpdateNoteModal(model){
-    this.model.title = model.title ;
-    this.model.content = model.content;
-  }
-
-  updateNote(model){
-    /*  this.noteService.updateNote(model).subscribe( data => {
-      this.notes = this.notes.(n => n !== model);
+updateNote(note){
+  /*  this.noteService.updateNote(model).subscribe( 
+    data => {
+    },
+     err => {
+       alert("An error occurred while updating the note");
     }); */
-  }
+}
 
-  clearForms(){
-    this.model.title = "";
-    this.model.content = "";
-  }
-
-  state = 'active';
+state = 'active';
 }
 
 export interface DialogData {

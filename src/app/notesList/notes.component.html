@@ -1,22 +1,27 @@
-<div class="row">
-   <div class="columns" id="search">
-    <p id="results-label">{{notes.length}} Notes</p>
-
-        <mat-card id="notes-list" class="cards" [@notesAnim]="state" *ngFor="let note of notes; let i = index">
-            <mat-card-header fxLayout="row" fxLayoutAlign="space-around center">
-                <mat-card-title-group>
-                    <mat-card-title>{{ note.title }}</mat-card-title>
-                </mat-card-title-group>
-                   <img src="assets/trash-can.svg" (click)="deleteNote(note)">
-                   <img src="assets/edit.svg" (click)="openUpdateNoteModal(note)">
-             </mat-card-header>            
-            <mat-card-content>
-              <p class="noteContent">{{ note.content }}</p>
-            </mat-card-content>
-            <mat-card-actions>
-              <p class="noteFooter"> {{ note.date }}</p>
-            </mat-card-actions>
-          </mat-card>    
+<div class="container">
+  <div class="row">
+    <ng-container class="rowsContainer" *ngFor="let note of notes; let i = index">
+      <app-note [@notesAnim]="state" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 cards" [note]="note"
+      (noteUpdateEvent)="updateNote($event)" (noteDeleteEvent)="deleteNote($event)"></app-note>
+    </ng-container>
   </div>
 </div>
 
+<!--
+    <div class="columns">
+      Latest Month : April 2019
+      <div>
+        notes in cards :
+            note Title
+            first lines 
+      </div>
+
+       January 2019
+      <div> spaced notes in grid 
+        notes in cards :
+            note Title
+            first lines 
+      </div>
+      //on Note click show detail note
+    </div>
+  -->

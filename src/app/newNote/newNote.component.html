@@ -1,25 +1,28 @@
-<div class="row">
-  <div class="larg-12 columns">
-        <h1>Notes</h1><br>
-    
-        <form #myForm="ngForm" (ngSubmit)="myForm.form.valid && createNote()">
-          <input type="text" placeholder="title" name="title" [(ngModel)]="model.title" #noteTitle="ngModel"
-            [ngClass]="{'is-invalid' : myForm.submitted && noteTitle.invalid}"  maxlength="40" required>
-    
-          <div *ngIf="myForm.submitted && noteTitle.invalid">
-            <p *ngIf="noteTitle.errors?.required" class="invalid-input">Note title is obligatory.</p>
-          </div>
-          
-          <textarea placeholder="content" name="content" [(ngModel)]="model.content" #noteContent="ngModel"
-            [ngClass]="{'is-invalid' : myForm.submitted && noteContent.invalid}" rows="3" maxlength="200" required></textarea>
-          
-            <div *ngIf="myForm.submitted && noteContent.invalid">
-              <p *ngIf="noteContent.errors?.required" class="invalid-input">Note content is obligatory.</p>
-            </div>
-    
-          <button id="btn" type="submit">Add Note</button>
-        </form>
-      </div>  
+<div class="container">
+  <div class="row">
+    <div class="center">
+      <h3>Add new note</h3>
+    </div>
+
+    <div class="row formDiv">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && createNote(f)">
+        <input type="text" placeholder="title" name="title" #noteTitle="ngModel"
+          [ngClass]="{'is-invalid' : f.submitted && noteTitle.invalid}" maxlength="40" required ngModel>
+
+        <div *ngIf="f.submitted && noteTitle.invalid">
+          <p *ngIf="noteTitle.errors?.required" class="invalid-input">Note title is obligatory.</p>
+        </div>
+
+        <textarea placeholder="content" name="content" #noteContent="ngModel"
+          [ngClass]="{'is-invalid' : f.submitted && noteContent.invalid}" rows="3" maxlength="500" required
+          ngModel></textarea>
+
+        <div *ngIf="f.submitted && noteContent.invalid">
+          <p *ngIf="noteContent.errors?.required" class="invalid-input">Note content is obligatory.</p>
+        </div>
+
+        <button  type="submit">Save Note</button>
+      </form>
+    </div>
   </div>
-
-
+</div>

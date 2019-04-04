@@ -23,8 +23,8 @@ export class NoteService {
     return this.http.post<Note>(this.notesUrl + "/createNote", note);
   }
 
-  deleteNote(note) {
-    return this.http.delete(this.notesUrl + "/deleteNote/" + note.id);
+  deleteNote(noteId : string) {
+    return this.http.delete(this.notesUrl + "/deleteNote/" + noteId);
   }
 
   updateNote(note) {
