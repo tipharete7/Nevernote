@@ -9,27 +9,24 @@ import { NgForm } from '@angular/forms';
   templateUrl: './newNote.component.html',
   styleUrls: ['./newNote.component.css']
 })
-export class NewNoteComponent implements OnInit {
+export class NewNoteComponent {
+
+  note : Note = new Note();
 
   constructor(private router: Router, private noteService: NoteService) {
   }
 
-  ngOnInit() {
-  }
-
-  createNote(f: NgForm) {
-    //
-    this.noteService.createNote(f.value).subscribe( 
+  createNote() {
+    this.noteService.createNote(this.note).subscribe( 
       data => {
             this.clearForms();
-            //go to notes
-            //this.router.navigate(['/notes']);
+            this.router.navigate(['/notes']);
       });
   }
 
   clearForms(){
-   // this.model.title = "";
-    //this.model.content = "";
+    this.note.title = "";
+    this.note.content = "";
   }
 
 }
