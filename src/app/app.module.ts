@@ -14,6 +14,7 @@ import { NoteService } from './shared/notes.service';
 import { HttpClientModule } from "@angular/common/http";
 import { NoteBooksComponent } from './noteBooks/noteBooks.component';
 import { NoteComponent } from './notesList/note/note.component';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NoteComponent } from './notesList/note/note.component';
     NewNoteComponent,
     NoteBooksComponent,
     NoteComponent,
+    TagsComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,18 +3,15 @@ input::placeholder, textarea::placeholder {
 }
 
 input {
-
     outline: 0;
     border-width: 0 0 2px;
     border-color: black;
-    margin-bottom: 20%;
     padding: 24px;
     color: #fff;
     background-color: #52595B !important;
 }
 
 textarea {
-    margin-bottom: 20%;
     resize: none;
     outline: none;
     border: none !important;
@@ -26,7 +23,6 @@ button {
     display: block;
     width: 40%;
     background: #1ad39a;
-    margin-top: 20%;
     cursor: pointer;
     font-weight: bold;
     color: whitesmoke;
@@ -34,7 +30,6 @@ button {
 
 h3 {
     color: whitesmoke;
-    margin-bottom: 20%;
 }
 
 .invalid-input {
