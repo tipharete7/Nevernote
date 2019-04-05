@@ -1,26 +1,25 @@
 <div class="container">
-    <div class="row align-self-center">
-      <h3>Add new note</h3>
-    </div>
+  <div class="col-lg-8 col-sm-6 offset-sm-3 text-center justify-content-center">
+       <form #f="ngForm" (ngSubmit)="f.form.valid && createNote()">
+      <div class="form-group">
+        <input type="text"  class="form-control" placeholder="title" name="title" [(ngModel)]="note.title" #noteTitle="ngModel"
+          [ngClass]="{'is-invalid' : f.submitted && noteTitle.invalid}" maxlength="40" required>
+      </div>
+      <div *ngIf="f.submitted && noteTitle.invalid">
+        <p *ngIf="noteTitle.errors?.required" class="invalid-input">Note title is obligatory.</p>
+      </div>
 
-    <div class="row align-self-center formDiv">
-      <form #f="ngForm" (ngSubmit)="f.form.valid && createNote(f)">
-        <input type="text" placeholder="title" name="title" #noteTitle="ngModel"
-          [ngClass]="{'is-invalid' : f.submitted && noteTitle.invalid}" maxlength="40" required ngModel>
+      <div class="form-group">
+        <textarea class="form-control" placeholder="content" name="content" [(ngModel)]="note.content" #noteContent="ngModel"
+          [ngClass]="{'is-invalid' : f.submitted && noteContent.invalid}" rows="3" maxlength="500" required></textarea>
+      </div>
 
-        <div *ngIf="f.submitted && noteTitle.invalid">
-          <p *ngIf="noteTitle.errors?.required" class="invalid-input">Note title is obligatory.</p>
-        </div>
-
-        <textarea placeholder="content" name="content" #noteContent="ngModel"
-          [ngClass]="{'is-invalid' : f.submitted && noteContent.invalid}" rows="3" maxlength="500" required
-          ngModel></textarea>
-
-        <div *ngIf="f.submitted && noteContent.invalid">
-          <p *ngIf="noteContent.errors?.required" class="invalid-input">Note content is obligatory.</p>
-        </div>
-
-        <button  type="submit">Save Note</button>
-      </form>
-    </div>
+      <div *ngIf="f.submitted && noteContent.invalid">
+        <p *ngIf="noteContent.errors?.required" class="invalid-input">Note content is obligatory.</p>
+      </div>
+      <div class="form-group">
+        <button class="btn-lg" type="submit">Create Note</button>
+      </div>
+    </form>
+  </div>
 </div>

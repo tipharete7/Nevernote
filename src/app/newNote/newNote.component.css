@@ -1,37 +1,44 @@
-input::placeholder, textarea::placeholder {
+.container{
+    margin-top: 15%;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
     color: #95989A;
 }
 
-input {
-    outline: 0;
-    border-width: 0 0 2px;
+.form-control:focus {
+    border-width: 0 0 1px;
     border-color: black;
-    padding: 24px;
-    color: #fff;
-    background-color: #52595B !important;
+    box-shadow: none;
 }
 
-textarea {
-    resize: none;
-    outline: none;
-    border: none !important;
-    color: #fff;
+.form-group input {
+    height: 3em;
+    border-width: 0 0 1px;
+    border-color: black;
+    padding: 10px;
+    color: whitesmoke;
     background-color: #52595B !important;
+    margin-bottom: 1.5%;
+}
+
+.form-group textarea {
+    height: 10em;
+    resize: none;
+    border: none !important;
+    color: whitesmoke;
+    background-color: #52595B !important;
+    margin-bottom: 1.5%;
 }
 
 button {
-    display: block;
-    width: 40%;
-    background: #1ad39a;
+    width: 35%;
+    background-color: #1ad39a;
     cursor: pointer;
-    font-weight: bold;
-    color: whitesmoke;
-}
-
-h3 {
-    color: whitesmoke;
+    font-weight: 600;
+    color: rgb(51, 58, 59);
 }
 
 .invalid-input {
-    color: red;
+    color: rgb(245, 22, 22);
 }
