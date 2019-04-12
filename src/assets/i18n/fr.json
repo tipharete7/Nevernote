@@ -1,0 +1,20 @@
+{
+    "APP": {
+        "TITLE" : "Nevernote",
+        "SIDENAV_LINKS" : {
+            "ALL_NOTES" : "Tout les Notes",
+            "NOTEBOOKS" : "Carnets de Notes",
+            "TAGS" : "Étiquettes"
+        },
+        "ALL_NOTES" : {
+            "NEW_NOTE" : "Nouvelle Note"
+        },
+        "NOTEBOOKS" : {
+            "NEW_NOTEBOOK" : "Nouveau Carnet de Notes"
+        },
+        "TAGS" : {
+            "NEW_TAG" : "Nouvelle Étiquette"
+        }
+    }
+}
+

@@ -1,0 +1,15 @@
+<!--NoteBook ngContainer-->
+<div id="notebookItem" class="card box-shadow">
+  <div class="card-body">
+    <div>
+      <input type="text" 
+       [(ngModel)]="notebook.name" 
+       (change)="updateNoteBook()" 
+       class="input-label-lg"
+       maxlength="18" />
+      <a (click)="deleteNoteBook()" class="pull-right text-danger">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </div>
+  </div>
+</div>

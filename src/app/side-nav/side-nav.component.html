@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <h2>{{ 'APP.TITLE' | translate }}</h2>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/notes">
+        <i class="fa fa-sticky-note" aria-hidden="true"></i> {{ 'APP.SIDENAV_LINKS.ALL_NOTES' | translate }}</a>
+      <a mat-list-item routerLink="/notebooks">
+        <i class="fa fa-address-book" aria-hidden="true"></i> {{ 'APP.SIDENAV_LINKS.NOTEBOOKS' | translate }}</a>
+      <a mat-list-item routerLink="/tags">
+        <i class="fa fa-bookmark" aria-hidden="true"></i> {{ 'APP.SIDENAV_LINKS.TAGS' | translate }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        color="red"
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Toolbar</span>
+    </mat-toolbar> -->
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

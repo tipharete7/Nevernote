@@ -1,4 +1,4 @@
-<!--ngContainer-->
+<!--Note ngContainer-->
 <div id="noteItem" class="card box-shadow">
     <div class="card-body">
         <div>
@@ -16,6 +16,6 @@
      rows="6"
     [(ngModel)]="note.content"
     (change)="updateNote()"></textarea>
-    <strong class="text-info">{{note.lastModificationDate | date:'dd-MM-yyy HH:mm'}}</strong>
+    <strong class="text-info">{{note.lastModificationDate | date:'dd/MM/yyy HH:mm'}}</strong>
   </div>
   
