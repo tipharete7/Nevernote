@@ -29,6 +29,14 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class NotesComponent implements OnInit {
 
+  model: Note = {
+    id: "",
+    title: "",
+    content: "",
+    creationDate: "",
+    lastModificationDate : ""
+  }
+
   notes: Note[] = [];
   selectedNote: Note;
 
@@ -56,18 +64,18 @@ export class NotesComponent implements OnInit {
         err => { alert("An error has occurred while deleting the note"); }
       );
     }
-  }
+}
 
-  updateNote(note) {
-    this.noteService.updateNote(note).subscribe(
-      data => {
-      },
-      err => {
-        alert("An error occurred while updating the note");
-      });
-  }
+updateNote(note){
+  /*  this.noteService.updateNote(model).subscribe( 
+    data => {
+    },
+     err => {
+       alert("An error occurred while updating the note");
+    }); */
+}
 
-  state = 'active';
+state = 'active';
 }
 
 export interface DialogData {
