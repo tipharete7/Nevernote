@@ -23,12 +23,12 @@ export class NoteBookService {
     return this.http.post<NoteBook>(this.notesBooksUrl + "/createNoteBook", notebook);
   }
 
-  deleteNoteBook(notebookId : string) {
-    return this.http.delete(this.notesBooksUrl + "/deleteNoteBook/" + notebookId);
-  }
-
+  
   updateNoteBook(notebook) {
     return this.http.put<NoteBook>(this.notesBooksUrl + "/updateNoteBook", notebook);
   }
   
+  deleteNoteBook(notebookId : string) {
+    return this.http.delete(this.notesBooksUrl + "/deleteNoteBook/" + notebookId);
+  }
 }

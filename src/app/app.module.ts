@@ -20,8 +20,7 @@ import { NoteComponent } from './notesList/note/note.component';
 import { TagsComponent } from './tags/tags.component';
 import { NotebookComponent } from './noteBooks/notebook/notebook.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -37,8 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NoteBooksComponent,
     NoteComponent,
     TagsComponent,
-    NotebookComponent,
-    SideNavComponent
+    NotebookComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MaterialModule,
     routes,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
