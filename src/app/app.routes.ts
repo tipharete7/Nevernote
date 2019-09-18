@@ -2,8 +2,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NotesComponent } from './notesList/notes.component';
-import { NewNoteComponent } from './notesList/newNote/newNote.component';
+import { NotesComponent } from './notes/notes.component';
+import { NewNoteComponent } from './notes/newNote/newNote.component';
 import { NoteBooksComponent } from './noteBooks/noteBooks.component';
 import { TagsComponent } from './tags/tags.component';
 
