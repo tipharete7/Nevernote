@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Note } from '../models/note.model';
-import { NoteService } from '../shared/notes.service';
 import { NgForm } from '@angular/forms';
+import { Note } from '../../models/note.model';
+import { NoteService } from '../../shared/notes.service';
 
 @Component({
   selector: 'app-newNote',
@@ -11,13 +11,14 @@ import { NgForm } from '@angular/forms';
 })
 export class NewNoteComponent {
 
-  note : Note = new Note();
+  note : Note;
 
   constructor(private router: Router, private noteService: NoteService) {
+        this.note = new Note();
   }
 
   createNote() {
-    this.noteService.createNote(this.note).subscribe( 
+    this.noteService.createNote(this.note).subscribe(
       data => {
             this.clearForms();
             this.router.navigate(['/notes']);
@@ -28,5 +29,4 @@ export class NewNoteComponent {
     this.note.title = "";
     this.note.content = "";
   }
-
 }
