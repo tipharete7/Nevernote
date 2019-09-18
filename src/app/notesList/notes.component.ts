@@ -1,12 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
-import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Note } from '../models/note.model';
 import { NoteService } from '../shared/notes.service';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-notes',

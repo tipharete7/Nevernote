@@ -4,6 +4,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { NoteBook } from './../models/notebook.model';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-noteBooks',
   templateUrl: './noteBooks.component.html',
