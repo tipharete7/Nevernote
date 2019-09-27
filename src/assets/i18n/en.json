@@ -2,8 +2,8 @@
     "APP": {
         "TITLE" : "Nevernote",
         "SIDENAV_LINKS" : {
-            "ALL_NOTES" : "All Notes",
-            "NOTEBOOKS" : "NoteBooks",
+            "ALL_NOTES" : "Notes",
+            "NOTEBOOKS" : "Notebooks",
             "TAGS" : "Tags"
         },
         "ALL_NOTES" : {
