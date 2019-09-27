@@ -1,7 +1,7 @@
-import { NoteBookService } from './../shared/notebooks.service';
+import { NotebookService } from '../shared/notebooks.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
-import { NoteBook } from './../models/notebook.model';
+import { Notebook } from '../models/notebook.model';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -24,27 +24,27 @@ import { Component, OnInit } from '@angular/core';
     ])
   ]
 })
-export class NoteBooksComponent implements OnInit {
+export class NotebooksComponent implements OnInit {
 
-  notebooks: NoteBook[] = [];
-  selectedNoteBook: NoteBook;
+  notebooks: Notebook[] = [];
+  selectedNotebook: Notebook;
 
-  constructor(private router: Router, private notebookService: NoteBookService) { }
+  constructor(private router: Router, private notebookService: NotebookService) { }
 
   ngOnInit() {
-    this.getNoteBooks();
+    this.getNotebooks();
   }
 
-  getNoteBooks() {
-    this.notebookService.getNoteBooks().subscribe(
+  getNotebooks() {
+    this.notebookService.getNotebooks().subscribe(
       data => { this.notebooks = data },
-      error => { alert("An error occured while getting list of notebooks /n " + error) }
+      error => { alert("An error occured while getting list of notebooks " + JSON.stringify(error)); }
     )
   }
 
-  deleteNoteBook(notebook: NoteBook) {
+  deleteNotebook(notebook: Notebook) {
     if (confirm("Are you sure to delete this notebook ?")) {
-      this.notebookService.deleteNoteBook(notebook.id).subscribe(
+      this.notebookService.deleteNotebook(notebook.id).subscribe(
         data => {
           let indexOfNote = this.notebooks.indexOf(notebook);
           this.notebooks.splice(indexOfNote, 1);
@@ -54,9 +54,9 @@ export class NoteBooksComponent implements OnInit {
     }
   }
 
-  updateNote(notebook: NoteBook) {
-    /*this.notebookService.updateNoteBook(notebook).subscribe( 
-       err => { alert("An error occurred while updating the notebook /n" + error); }); */
+  updateNote(notebook: Notebook) {
+    /*this.notebookService.updateNotebook(notebook).subscribe(
+       err => { alert("An error occurred while updating the notebook" + JSON.stringify(error)); }); */
   }
 
   state = 'active';
