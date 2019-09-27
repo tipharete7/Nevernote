@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Notebook } from './../../models/notebook.model';
+import { NoteBook } from './../../models/notebook.model';
 
 @Component({
   selector: 'app-notebook',
@@ -7,17 +7,17 @@ import { Notebook } from './../../models/notebook.model';
   styleUrls: ['./notebook.component.css']
 })
 export class NotebookComponent {
-  @Input() notebook: Notebook;
+  @Input() notebook: NoteBook;
 
-  @Output() notebookUpdateEvent: EventEmitter<Notebook> = new EventEmitter<Notebook>();
-  @Output() notebookDeleteEvent: EventEmitter<Notebook> = new EventEmitter<Notebook>();
+  @Output() notebookUpdateEvent: EventEmitter<NoteBook> = new EventEmitter<NoteBook>();
+  @Output() notebookDeleteEvent: EventEmitter<NoteBook> = new EventEmitter<NoteBook>();
 
 
-  updateNotebook() {
+  updateNoteBook() {
     this.notebookUpdateEvent.emit(this.notebook);
   }
 
-  deleteNotebook() {
+  deleteNoteBook() {
     this.notebookDeleteEvent.emit(this.notebook);
   }
 }

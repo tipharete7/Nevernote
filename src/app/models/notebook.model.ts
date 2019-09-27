@@ -1,6 +1,4 @@
-export class Notebook {
+export class NoteBook {
     id: string;
     name: string;
-    creationDate: Date;
-    lastModificationDate: Date;
   }
