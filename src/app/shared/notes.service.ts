@@ -13,22 +13,22 @@ export class NoteService {
 
   constructor(private http:HttpClient) {}
 
-  private notesUrl = 'http://localhost:8080/api';
+  private notesUrl = 'http://localhost:8080/notes';
 
   getNotes() : Observable<Note[]> {
-    return this.http.get<Note[]>(this.notesUrl + "/notes");
+    return this.http.get<Note[]>(this.notesUrl);
   }
 
   createNote(note : Note) : Observable<any> {
-    return this.http.post<Note>(this.notesUrl + "/createNote", note);
+    return this.http.post<Note>(this.notesUrl, note);
   }
 
   deleteNote(noteId : string) {
-    return this.http.delete(this.notesUrl + "/deleteNote/" + noteId);
+    return this.http.delete(this.notesUrl + "/" + noteId);
   }
 
-  updateNote(note) {
-    return this.http.put<Note>(this.notesUrl + "/updateNote", note);
+  updateNote(noteId : string, note : any) {
+    return this.http.put<Note>(this.notesUrl + "/" + noteId, note);
   }
-  
+
 }

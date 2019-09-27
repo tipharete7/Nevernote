@@ -1,4 +1,4 @@
-import { NoteBook } from './../models/notebook.model';
+import { Notebook } from './../models/notebook.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,26 +9,25 @@ const httpOptions = {
 };
 
 @Injectable()
-export class NoteBookService {
+export class NotebookService {
 
   constructor(private http:HttpClient) {}
 
-  private notesBooksUrl = 'http://localhost:8080/api';
+  private notebooksUrl = 'http://localhost:8080/notebooks';
 
-  getNoteBooks() : Observable<NoteBook[]> {
-    return this.http.get<NoteBook[]>(this.notesBooksUrl + "/notebooks");
+  getNotebooks() : Observable<Notebook[]> {
+    return this.http.get<Notebook[]>(this.notebooksUrl);
   }
 
-  createNoteBook(notebook : NoteBook) : Observable<any> {
-    return this.http.post<NoteBook>(this.notesBooksUrl + "/createNoteBook", notebook);
+  createNotebook(notebook : Notebook) : Observable<any> {
+    return this.http.post<Notebook>(this.notebooksUrl + "/", notebook);
   }
 
-  
-  updateNoteBook(notebook) {
-    return this.http.put<NoteBook>(this.notesBooksUrl + "/updateNoteBook", notebook);
+  updateNotebook(notebook) {
+    return this.http.put<Notebook>(this.notebooksUrl + "/", notebook);
   }
-  
-  deleteNoteBook(notebookId : string) {
-    return this.http.delete(this.notesBooksUrl + "/deleteNoteBook/" + notebookId);
+
+  deleteNotebook(notebookId : string) {
+    return this.http.delete(this.notebooksUrl + "/" + notebookId);
   }
 }
