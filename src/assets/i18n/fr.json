@@ -6,6 +6,11 @@
             "NOTEBOOKS" : "Carnets de Notes",
             "TAGS" : "Étiquettes"
         },
+        "NEW_NOTE" : {
+          "UNTITLED" : "Sans Titre",
+          "SAVE_NOTE" : "Enregistrer",
+          "EDITOR_PH" : "Ecrire le contenu ici."
+        },
         "ALL_NOTES" : {
             "NEW_NOTE" : "Nouvelle Note"
         },

@@ -1,44 +1,28 @@
-.container{
-    margin-top: 15%;
+.newNoteContainer {
+    margin-top: 6%;
+    margin-left : 4%;
 }
 
-.form-group input::placeholder, .form-group textarea::placeholder {
-    color: #95989A;
+.saveAnimationIcon {
+    background-color: green;
+    float : right;
 }
 
-.form-control:focus {
-    border-width: 0 0 1px;
-    border-color: black;
-    box-shadow: none;
+.titlelnput {
+  background-color: rgb(53, 44, 44);
+  width: 90%;
+  padding : 10px;
+  color : whitesmoke;
+  border-color:  rgb(53, 44, 44);
 }
 
-.form-group input {
-    height: 3em;
-    border-width: 0 0 1px;
-    border-color: black;
-    padding: 10px;
-    color: whitesmoke;
-    background-color: #52595B !important;
-    margin-bottom: 1.5%;
-}
-
-.form-group textarea {
-    height: 10em;
-    resize: none;
-    border: none !important;
-    color: whitesmoke;
-    background-color: #52595B !important;
-    margin-bottom: 1.5%;
-}
-
-button {
-    width: 35%;
-    background-color: #1ad39a;
-    cursor: pointer;
-    font-weight: 600;
-    color: rgb(51, 58, 59);
+.contentBody {
+  width: 90%;
+  height: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .invalid-input {
-    color: rgb(245, 22, 22);
+    border-color: rgb(245, 22, 22);
 }

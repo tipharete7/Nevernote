@@ -1,7 +1,7 @@
 <div class="container">
   <div class="floatingBtnDiv pull-right">
-    <button mat-icon-button color="primary" aria-label="New Note">
-      <mat-icon class="floatingBtn">add</mat-icon>
+    <button mat-icon-button color="accent" aria-label="New Note">
+      <mat-icon class="floatingBtn" [routerLink]="['/newNote']">add</mat-icon>
     </button>
   </div>
 
@@ -12,33 +12,3 @@
     </ng-container>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-    <div class="columns">
-      Latest Month : April 2019
-      <div>
-        notes in cards :
-            note Title
-            first lines
-      </div>
-
-       January 2019
-      <div> spaced notes in grid
-        notes in cards :
-            note Title
-            first lines
-      </div>
-      //on Note click show detail note
-    </div>
-  -->

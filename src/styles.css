@@ -27,5 +27,14 @@ a {
 }
 
 p {
-  color: #95989a;
+  color: black;
+}
+
+
+.ck-editor__editable_inline {
+  min-height: 500px;
+  padding : 10px;
+  color : black;
+  background-color: rgb(53, 44, 44);
+  overflow: scroll;
 }

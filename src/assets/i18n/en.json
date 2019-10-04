@@ -6,6 +6,11 @@
             "NOTEBOOKS" : "Notebooks",
             "TAGS" : "Tags"
         },
+        "NEW_NOTE" : {
+          "UNTITLED" : "Untitled",
+          "SAVE_NOTE" : "Save",
+          "EDITOR_PH" : "Note content here."
+        },
         "ALL_NOTES" : {
             "NEW_NOTE" : "New Note"
         },

@@ -19,7 +19,7 @@ import { NoteComponent } from './notes/note/note.component';
 import { TagsComponent } from './tags/tags.component';
 import { NotebookComponent } from './noteBooks/notebook/notebook.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,12 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    CKEditorModule,
     routes,
     LayoutModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
