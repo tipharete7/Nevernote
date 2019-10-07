@@ -1,36 +1,47 @@
-#noteItem {
-    background-color: #2A3031;
-    margin-top: 30px;
+.note-card {
+  max-height: 250px;
+  height: 250px;
+  overflow: hidden;
+  background-color: #2a3031;
+  margin-top: 25px;
+  font-size: 0.9em;
 }
 
-#noteItem input {
-    width: 91%;
-    background: transparent;
-    border: none;
-    color:whitesmoke;
+.note-header h6 {
+  display: inline-block;
+  color: rgb(110, 124, 119);
 }
 
-#noteItem textarea {
-    margin-top: 10%;
-    width: 95%;
-    background: transparent;
-    border: none;
-    resize: none;
-    color:whitesmoke;
-    outline: none;
+.note-header,
+.note-content {
+  padding: 12px;
 }
 
-#noteItem strong {
-    font-size: small;
-    margin-top: -10%;
+.note-header a {
+  visibility: hidden;
+  cursor: pointer;
+  float: right;
+  color: rgb(245, 76, 76);
+}
+
+.note-header:hover a {
+  visibility: visible;
 }
 
 
-#noteItem a {
-    visibility: hidden;
-    cursor: pointer;
+.note-content p {
+  color :rgb(230, 240, 210);
 }
 
-#noteItem:hover a {
-    visibility: visible;
+.note-content:hover {
+  box-shadow: #2a3031;
+  cursor: pointer;
+}
+
+footer {
+  position: absolute;
+  bottom: 3%;
+  right: 0;
+  margin-right: 10%;
+  color: rgb(110, 124, 119);
 }

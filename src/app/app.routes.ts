@@ -11,6 +11,7 @@ import { TagsComponent } from './tags/tags.component';
 export const router: Routes = [
     { path: '', redirectTo: 'notes', pathMatch: 'full' },
     { path: 'newNote', component: NewNoteComponent },
+    { path: 'newNote/:id', component: NewNoteComponent },
     { path: 'notes', component: NotesComponent },
     { path: 'notebooks', component: NotebooksComponent },
     { path: 'tags', component: TagsComponent },

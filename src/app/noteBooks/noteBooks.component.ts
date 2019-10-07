@@ -1,14 +1,14 @@
-import { NotebookService } from '../shared/notebooks.service';
-import { Router } from '@angular/router';
-import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
-import { Notebook } from '../models/notebook.model';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { Router } from '@angular/router';
+import { NotebookService } from '../shared/notebooks.service';
+import { Notebook } from '../models/notebook.model';
 
 
 @Component({
-  selector: 'app-noteBooks',
-  templateUrl: './noteBooks.component.html',
-  styleUrls: ['./noteBooks.component.css'],
+  selector: 'app-notebooks',
+  templateUrl: './notebooks.component.html',
+  styleUrls: ['./notebooks.component.css'],
   animations: [
     trigger('notebooksAnim', [
       state('active', style({

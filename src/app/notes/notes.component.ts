@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
-import { Note } from '../models/note.model';
 import { NoteService } from '../shared/notes.service';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Note } from '../models/note.model';
 
 
 @Component({
@@ -46,7 +46,6 @@ export class NotesComponent implements OnInit {
       error => { alert("An error has occured while getting list of notes" + error) });
   }
 
-
   deleteNote(note: Note) {
     if (confirm("Etes-vous sûr de supprimer cette note ?")) { // dialog https://www.youtube.com/watch?v=L7mrAYsh0-0
       this.noteService.deleteNote(note.id).subscribe(
@@ -58,16 +57,6 @@ export class NotesComponent implements OnInit {
       );
     }
   }
-
-  updateNote(note) {
-    this.noteService.updateNote(note).subscribe(
-      data => {
-      },
-      err => {
-        alert("An error occurred while updating the note");
-      });
-  }
-
   state = 'active';
 }
 

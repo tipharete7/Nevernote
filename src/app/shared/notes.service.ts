@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Note } from '../models/note.model';
 import { Observable } from 'rxjs';
+import { Note } from '../models/note.model';
 
 
 const httpOptions = {
@@ -19,16 +19,20 @@ export class NoteService {
     return this.http.get<Note[]>(this.notesUrl);
   }
 
-  createNote(note : Note) : Observable<any> {
+  getNoteById(id: number): Observable<any> {
+    return this.http.get(this.notesUrl + "/" + id);
+  }
+
+  createNote(note : Note) : Observable<Note> {
     return this.http.post<Note>(this.notesUrl, note);
   }
 
-  deleteNote(noteId : string) {
-    return this.http.delete(this.notesUrl + "/" + noteId);
+  updateNote(note : Note) : Observable<Note> {
+    return this.http.put<Note>(this.notesUrl + "/" + note.id, note);
   }
 
-  updateNote(noteId : string, note : any) {
-    return this.http.put<Note>(this.notesUrl + "/" + noteId, note);
+  deleteNote(noteId : string) : Observable<any>{
+    return this.http.delete(this.notesUrl + "/" + noteId);
   }
 
 }
