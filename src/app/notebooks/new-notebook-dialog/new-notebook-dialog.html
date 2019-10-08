@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <h6>New Notebook</h6>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="data.notebookName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.notebookName" cdkFocusInitial>{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
+  <button mat-button (click)="onNoClick()">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</button>
+</div>

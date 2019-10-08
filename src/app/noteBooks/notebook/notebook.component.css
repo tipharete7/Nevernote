@@ -4,10 +4,11 @@
 }
 
 #notebookItem input {
-    width: 91%;
+    width: 80%;
     background: transparent;
     border: none;
     color:whitesmoke;
+    text-align: center;
 }
 
 #notebookItem a {

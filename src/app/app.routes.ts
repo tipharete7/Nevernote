@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NotesComponent } from './notes/notes.component';
 import { NewNoteComponent } from './notes/newNote/newNote.component';
-import { NotebooksComponent } from './noteBooks/notebooks.component';
+import { NotebooksComponent } from './notebooks/notebooks.component';
 import { TagsComponent } from './tags/tags.component';
 
 
