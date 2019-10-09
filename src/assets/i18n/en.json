@@ -19,6 +19,10 @@
         },
         "TAGS" : {
             "NEW_TAG" : "New Tag"
+        },
+        "CONFIRMATION_DIALOG" : {
+          "CONFIRM" : "Confirm",
+          "CANCEL" : "Cancel"
         }
     }
 }

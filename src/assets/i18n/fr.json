@@ -19,6 +19,10 @@
         },
         "TAGS" : {
             "NEW_TAG" : "Nouvelle Étiquette"
+        },
+        "CONFIRMATION_DIALOG" : {
+          "CONFIRM" : "Confirmer",
+          "CANCEL" : "Annuler"
         }
     }
 }

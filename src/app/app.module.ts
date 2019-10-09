@@ -1,5 +1,3 @@
-import { TagService } from './shared/tags.service';
-import { NotebookService } from './shared/notebooks.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -9,17 +7,22 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
+import { LayoutModule } from '@angular/cdk/layout';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppComponent } from './app.component';
 import { NotesComponent } from './notes/notes.component';
 import { NewNoteComponent } from './notes/newNote/newNote.component';
-import { NoteService } from './shared/notes.service';
-import { NotebooksComponent } from './noteBooks/notebooks.component';
+import { NotebooksComponent } from './notebooks/notebooks.component';
 import { NoteComponent } from './notes/note/note.component';
 import { TagsComponent } from './tags/tags.component';
-import { NotebookComponent } from './noteBooks/notebook/notebook.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NotebookComponent } from './notebooks/notebook/notebook.component';
+import { NewNotebookDialog } from './notebooks/new-notebook-dialog/new-notebook-dialog';
+
+import { NoteService } from './shared/notes.service';
+import { NotebookService } from './shared/notebooks.service';
+import { TagService } from './shared/tags.service';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,7 +37,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotebooksComponent,
     NoteComponent,
     TagsComponent,
-    NotebookComponent
+    NotebookComponent,
+    NewNotebookDialog,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     })],
+  entryComponents: [NotebooksComponent, NewNotebookDialog, ConfirmationDialogComponent],
   providers: [NoteService, NotebookService, TagService],
   bootstrap: [AppComponent]
 })
