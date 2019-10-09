@@ -13,14 +13,14 @@ export class NoteService {
 
   constructor(private http:HttpClient) {}
 
-  private notesUrl = 'http://localhost:8080/notes';
+  private notesUrl = 'http://localhost:8080/notes/';
 
   getNotes() : Observable<Note[]> {
     return this.http.get<Note[]>(this.notesUrl);
   }
 
   getNoteById(id: number): Observable<any> {
-    return this.http.get(this.notesUrl + "/" + id);
+    return this.http.get(this.notesUrl + id);
   }
 
   createNote(note : Note) : Observable<Note> {
@@ -28,11 +28,11 @@ export class NoteService {
   }
 
   updateNote(note : Note) : Observable<Note> {
-    return this.http.put<Note>(this.notesUrl + "/" + note.id, note);
+    return this.http.put<Note>(this.notesUrl + note.id, note);
   }
 
   deleteNote(noteId : string) : Observable<any>{
-    return this.http.delete(this.notesUrl + "/" + noteId);
+    return this.http.delete(this.notesUrl + noteId);
   }
 
 }

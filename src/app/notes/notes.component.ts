@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NoteService } from '../shared/notes.service';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Note } from '../models/note.model';
+import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class NotesComponent implements OnInit {
   notes: Note[] = [];
   selectedNote: Note;
 
-  constructor(private router: Router, private noteService: NoteService) {
+  constructor(private router: Router, private noteService: NoteService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -47,15 +48,22 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNote(note: Note) {
-    if (confirm("Etes-vous sûr de supprimer cette note ?")) { // dialog https://www.youtube.com/watch?v=L7mrAYsh0-0
-      this.noteService.deleteNote(note.id).subscribe(
-        data => {
-          let indexOfNote = this.notes.indexOf(note);
-          this.notes.splice(indexOfNote, 1);
-        },
-        err => { alert("An error has occurred while deleting the note"); }
-      );
-    }
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '280px',
+      height: '120px',
+      data: 'Confirm note deletion ?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.noteService.deleteNote(note.id).subscribe(
+          data => {
+            let indexOfNote = this.notes.indexOf(note);
+            this.notes.splice(indexOfNote, 1);
+          },
+          err => { alert("An error has occurred while deleting the note"); }
+        );
+      }
+    });
   }
   state = 'active';
 }

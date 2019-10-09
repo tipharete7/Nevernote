@@ -3,7 +3,9 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { Router } from '@angular/router';
 import { NotebookService } from '../shared/notebooks.service';
 import { Notebook } from '../models/notebook.model';
-
+import { MatDialog } from '@angular/material/dialog';
+import { NewNotebookDialog } from './new-notebook-dialog/new-notebook-dialog';
+import { ConfirmationDialogComponent } from './../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-notebooks',
@@ -28,11 +30,40 @@ export class NotebooksComponent implements OnInit {
 
   notebooks: Notebook[] = [];
   selectedNotebook: Notebook;
+  notebookName: string;
 
-  constructor(private router: Router, private notebookService: NotebookService) { }
+  constructor(private router: Router, private notebookService: NotebookService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getNotebooks();
+  }
+
+  openNewNotebookDialog() {
+    const dialogRef = this.dialog.open(NewNotebookDialog, {
+      width: '300px',
+      height: '250px',
+      data: { notebookName: this.notebookName }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.notebookName = result;
+        this.createNewNotebook();
+      }
+    });
+  }
+
+  createNewNotebook() {
+    let notebook = new Notebook();
+    notebook.name = this.notebookName;
+    notebook.creationDate = new Date();
+    console.log(JSON.stringify(notebook));
+    this.notebookService.createNotebook(notebook).subscribe(
+      data => {
+        this.notebooks.push(notebook);
+      },
+      error => { alert("An error occured while creating notebook " + JSON.stringify(error)); }
+    )
   }
 
   getNotebooks() {
@@ -43,20 +74,38 @@ export class NotebooksComponent implements OnInit {
   }
 
   deleteNotebook(notebook: Notebook) {
-    if (confirm("Are you sure to delete this notebook ?")) {
-      this.notebookService.deleteNotebook(notebook.id).subscribe(
-        data => {
-          let indexOfNote = this.notebooks.indexOf(notebook);
-          this.notebooks.splice(indexOfNote, 1);
-        },
-        error => { alert("An error has occurred while deleting this notebook /n " + error); }
-      );
-    }
-  }
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '280px',
+      height: '120px',
+      data: 'Confirm notebook deletion ?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.notebookService.deleteNotebook(notebook.id).subscribe(
+          data => {
+            let indexOfNote = this.notebooks.indexOf(notebook);
+            this.notebooks.splice(indexOfNote, 1);
+          },
+          error => { alert("An error has occurred while deleting this notebook " + error); }
+        );
+      }
+    });
 
-  updateNote(notebook: Notebook) {
-    /*this.notebookService.updateNotebook(notebook).subscribe(
-       err => { alert("An error occurred while updating the notebook" + JSON.stringify(error)); }); */
+  }
+  updateNotebook(notebook: Notebook) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '280px',
+      height: '120px',
+      data: 'Confirm notebook update ?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.notebookService.updateNotebook(notebook).subscribe(
+          data => {
+          },
+          err => { alert("An error occurred while updating the notebook " + JSON.stringify(err)); });
+      }
+    });
   }
 
   state = 'active';

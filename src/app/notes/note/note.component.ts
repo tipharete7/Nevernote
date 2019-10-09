@@ -10,12 +10,9 @@ import { Note } from './../../models/note.model';
 export class NoteComponent {
 
   @Input() note: Note;
-
-  @Output() noteUpdateEvent: EventEmitter<Note> = new EventEmitter<Note>();
   @Output() noteDeleteEvent: EventEmitter<Note> = new EventEmitter<Note>();
 
   constructor(public router: Router) {
-    //this.note.content = this.note.content.innerHTML.substr(0,15);
   }
 
   updateNote(note : Note) {
