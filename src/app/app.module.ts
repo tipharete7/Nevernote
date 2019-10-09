@@ -23,6 +23,7 @@ import { NoteService } from './shared/notes.service';
 import { NotebookService } from './shared/notebooks.service';
 import { TagService } from './shared/tags.service';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TagsComponent,
     NotebookComponent,
     NewNotebookDialog,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

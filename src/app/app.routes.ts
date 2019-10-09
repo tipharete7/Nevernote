@@ -6,7 +6,7 @@ import { NotesComponent } from './notes/notes.component';
 import { NewNoteComponent } from './notes/newNote/newNote.component';
 import { NotebooksComponent } from './notebooks/notebooks.component';
 import { TagsComponent } from './tags/tags.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'notes', pathMatch: 'full' },
@@ -15,7 +15,7 @@ export const router: Routes = [
     { path: 'notes', component: NotesComponent },
     { path: 'notebooks', component: NotebooksComponent },
     { path: 'tags', component: TagsComponent },
-    { path: '**', component: NotesComponent }
+    { path: '**', component: PageNotFoundComponent }
 ]
 
 

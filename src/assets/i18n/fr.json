@@ -23,6 +23,9 @@
         "CONFIRMATION_DIALOG" : {
           "CONFIRM" : "Confirmer",
           "CANCEL" : "Annuler"
+        },
+        "PAGE_NOT_FOUND" : {
+          "BODY" : "Ce n'est pas la page que tu cherches, mon pote !"
         }
     }
 }
