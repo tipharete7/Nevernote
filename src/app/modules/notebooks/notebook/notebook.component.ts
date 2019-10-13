@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Notebook } from './../../models/notebook.model';
+import { Notebook } from '../../../model/notebook.model';
 
 @Component({
   selector: 'app-notebook',

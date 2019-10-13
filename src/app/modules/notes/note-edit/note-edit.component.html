@@ -5,7 +5,7 @@
       <!--if no title save note with default title : sans   {{ 'APP.NEW_NOTE.UNTITLED' | translate }}-->
     </div>
     <div class="contentBody">
-      <ckeditor [editor]="Editor" data="<p>{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</p>" name="content"
+      <ckeditor [editor]="Editor" data="{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}" name="content"
         [(ngModel)]="note.content"></ckeditor>
     </div>
     <div>

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Notebook } from './../models/notebook.model';
-
+import { Notebook } from '../../model/notebook.model';
 
 
 const httpOptions = {

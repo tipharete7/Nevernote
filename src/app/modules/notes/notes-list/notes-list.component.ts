@@ -1,19 +1,19 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NoteService } from '../shared/notes.service';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Note } from '../models/note.model';
-import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Note } from '../../../model/note.model';
+import { NoteService } from '../notes.service';
+import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.css'],
+  selector: 'app-notes-list',
+  templateUrl: './notes-list.component.html',
+  styleUrls: ['./notes-list.component.css'],
   animations: [
     trigger('notesAnim', [
       state('active', style({
@@ -29,7 +29,7 @@ import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confi
     ])
   ]
 })
-export class NotesComponent implements OnInit {
+export class NotesListComponent implements OnInit {
 
   notes: Note[] = [];
   selectedNote: Note;
@@ -66,9 +66,4 @@ export class NotesComponent implements OnInit {
     });
   }
   state = 'active';
-}
-
-export interface DialogData {
-  noteTitle: string;
-  noteContent: string;
 }

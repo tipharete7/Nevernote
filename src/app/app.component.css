@@ -11,6 +11,7 @@
   margin: 25% 0 17% 8%;
   color: #1ad39a;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .mat-nav-list a {

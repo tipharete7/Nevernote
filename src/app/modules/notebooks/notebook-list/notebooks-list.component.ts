@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
-import { NotebookService } from '../shared/notebooks.service';
-import { Notebook } from '../models/notebook.model';
 import { MatDialog } from '@angular/material/dialog';
-import { NewNotebookDialog } from './new-notebook-dialog/new-notebook-dialog';
-import { ConfirmationDialogComponent } from './../shared/confirmation-dialog/confirmation-dialog.component';
+import { Notebook } from '../../../model/notebook.model';
+import { NotebookService } from '../notebooks.service';
+import { NewNotebookDialog } from '../new-notebook-dialog/new-notebook-dialog';
+import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
-  selector: 'app-notebooks',
-  templateUrl: './notebooks.component.html',
-  styleUrls: ['./notebooks.component.css'],
+  selector: 'app-notebooks-list',
+  templateUrl: './notebooks-list.component.html',
+  styleUrls: ['./notebooks-list.component.css'],
   animations: [
     trigger('notebooksAnim', [
       state('active', style({
@@ -26,7 +27,7 @@ import { ConfirmationDialogComponent } from './../shared/confirmation-dialog/con
     ])
   ]
 })
-export class NotebooksComponent implements OnInit {
+export class NotebooksListComponent implements OnInit {
 
   notebooks: Notebook[] = [];
   selectedNotebook: Notebook;

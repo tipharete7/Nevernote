@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { Note } from '../../models/note.model';
-import { NoteService } from '../../shared/notes.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
+import { Note } from '../../../model/note.model';
+import { NoteService } from '../notes.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-newNote',
-  templateUrl: './newNote.component.html',
-  styleUrls: ['./newNote.component.css']
+  selector: 'app-note-edit',
+  templateUrl: './note-edit.component.html',
+  styleUrls: ['./note-edit.component.css']
 })
-export class NewNoteComponent {
+export class NoteEditComponent {
 
   note : Note;
   editMode : boolean = false;
@@ -36,7 +36,6 @@ export class NewNoteComponent {
   }
 
   createNote() {
-    console.log("called create Note");
     this.noteService.createNote(this.note).subscribe(
       data => {
             this.clearForms();
@@ -48,7 +47,6 @@ export class NewNoteComponent {
   }
 
   updateNote(note : Note) {
-    console.log("called update Note");
     this.noteService.updateNote(note).subscribe(
       data => {
           this.clearForms();

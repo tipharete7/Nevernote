@@ -3,4 +3,4 @@ export class Notebook {
     name: string;
     creationDate: Date;
     lastModificationDate: Date;
-  }
+}

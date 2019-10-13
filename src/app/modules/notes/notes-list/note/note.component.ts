@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Note } from './../../models/note.model';
+import { Note } from '../../../../model/note.model';
+
 
 @Component({
   selector: 'app-note',
@@ -16,7 +17,7 @@ export class NoteComponent {
   }
 
   updateNote(note : Note) {
-    this.router.navigate(['/newNote', note.id]);
+    this.router.navigate(['/notes', note.id]);
   }
 
   deleteNote() {
