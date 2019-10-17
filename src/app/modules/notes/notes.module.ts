@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../../shared/shared.module';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Params } from '@angular/router';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NoteComponent } from './notes-list/note/note.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NoteEditComponent } from './note-edit/note-edit.component';
 import { ConfirmationDialogComponent } from './../../shared/confirmation-dialog/confirmation-dialog.component';
+import { NotebookService } from './../notebooks/notebooks.service';
 import { NoteService } from './notes.service';
 
 
 const routes: Routes = [
       {
         path: '',
-        component: NotesListComponent,
+        component: NotesListComponent
       },
       {
         path: ':id',
@@ -31,6 +32,6 @@ const routes: Routes = [
     SharedModule,
     CKEditorModule
   ],
-  providers: [NoteService]
+  providers: [NoteService, NotebookService]
 })
 export class NotesModule { }

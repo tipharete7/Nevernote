@@ -26,3 +26,7 @@
 .invalid-input {
     border-color: rgb(245, 22, 22);
 }
+
+.moveToNotebookSelect{
+  margin-left : 2%;
+}

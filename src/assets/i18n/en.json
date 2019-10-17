@@ -11,6 +11,10 @@
           "SAVE_NOTE" : "Save",
           "EDITOR_PH" : "Note content here."
         },
+        "NOTE_EDIT" : {
+          "ADD_NOTE_TO_NOTEBOOK" : "Move to Notebook",
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note moved to {{ value }} notebook"
+        },
         "ALL_NOTES" : {
             "NEW_NOTE" : "New Note"
         },

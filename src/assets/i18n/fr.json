@@ -11,6 +11,10 @@
           "SAVE_NOTE" : "Enregistrer",
           "EDITOR_PH" : "Ecrire le contenu ici."
         },
+        "NOTE_EDIT" : {
+          "ADD_NOTE_TO_NOTEBOOK" : "Déplacer vers un carnet",
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacé vers le carnet {{ value }}"
+        },
         "ALL_NOTES" : {
             "NEW_NOTE" : "Nouvelle Note"
         },

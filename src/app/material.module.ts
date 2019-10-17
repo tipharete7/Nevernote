@@ -8,6 +8,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -16,7 +20,9 @@ const MATERIAL_MODULES = [
   MatSidenavModule,
   MatIconModule,
   MatListModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

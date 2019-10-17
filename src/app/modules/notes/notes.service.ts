@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Note } from '../../model/note.model';
+import { Notebook } from './../../model/notebook.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,10 @@ export class NoteService {
 
   getNotes() : Observable<Note[]> {
     return this.http.get<Note[]>(this.notesUrl);
+  }
+
+  getNotesByNotebookId(notebookId : string) : Observable<Note[]> {
+    return this.http.get<Note[]>(this.notesUrl + notebookId);
   }
 
   getNoteById(id: number): Observable<any> {
@@ -34,4 +39,7 @@ export class NoteService {
     return this.http.delete(this.notesUrl + noteId);
   }
 
+  addNoteToNotebook(noteId : string, notebookId : string): Observable<Note> {
+    return this.http.post<Note>(this.notesUrl + noteId + "/notebooks/" + notebookId, null);
+  }
 }
