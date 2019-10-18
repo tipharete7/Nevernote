@@ -1,0 +1,8 @@
+<mat-form-field class="moveToNotebookSelect">
+  <mat-label>{{ selectPlaceholder }} </mat-label>
+  <mat-select (selectionChange)="selectNotebook()" [(ngModel)]="selectedNotebook" name="notebookName">
+    <mat-option *ngFor="let notebook of notebooks" [value]="notebook">
+      {{notebook.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Notebook } from '../../model/notebook.model';
+import { Note } from './../../model/note.model';
 
 
 const httpOptions = {
@@ -17,6 +18,10 @@ export class NotebookService {
 
   getNotebooks(): Observable<Notebook[]> {
     return this.http.get<Notebook[]>(this.notebooksUrl);
+  }
+
+  getNotesByNotebookId(notebookId : string) : Observable<Note[]> {
+    return this.http.get<Note[]>(this.notebooksUrl + notebookId + "/notes");
   }
 
   createNotebook(notebook: Notebook): Observable<Notebook> {

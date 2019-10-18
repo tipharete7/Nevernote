@@ -6,7 +6,10 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Note } from '../../../model/note.model';
+import { Notebook } from './../../../model/notebook.model';
 import { NoteService } from '../notes.service';
+import { NotebookService } from './../../notebooks/notebooks.service';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
 
 
@@ -32,19 +35,37 @@ import { ConfirmationDialogComponent } from './../../../shared/confirmation-dial
 export class NotesListComponent implements OnInit {
 
   notes: Note[] = [];
+  notebooks: Notebook[] = [];
+  selectPlaceholder: string;
   selectedNote: Note;
+  selectedNotebook : Notebook;
 
-  constructor(private router: Router, private noteService: NoteService, public dialog: MatDialog) {
+  constructor(private router: Router, private noteService: NoteService,
+    private notebookService : NotebookService, public dialog: MatDialog, private translate: TranslateService) {
   }
 
   ngOnInit() {
     this.getNotes();
+    this.setSelectPlaceholder();
+    this.getNotebooks();
+  }
+
+  setSelectPlaceholder(){
+    this.translate.get("APP.SELECT_NOTEBOOK.FILTER_BY_NOTEBOOK").subscribe(res =>{
+      this.selectPlaceholder = res;
+    })
   }
 
   getNotes() {
     this.noteService.getNotes().subscribe(
       data => { this.notes = data },
-      error => { alert("An error has occured while getting list of notes" + error) });
+      err => { console.error("An error has occured while getting list of notes"); });
+  }
+
+  getNotebooks() {
+    this.notebookService.getNotebooks().subscribe(
+      data => { this.notebooks = data },
+      err => { console.error("An error has occured while getting list of notes"); });
   }
 
   deleteNote(note: Note) {
@@ -65,5 +86,14 @@ export class NotesListComponent implements OnInit {
       }
     });
   }
+
+  selectNotebook(notebook : Notebook){
+    this.notebookService.getNotesByNotebookId(notebook.id).subscribe(
+      res => {
+          this.notes = res;
+      }, err => { console.error("could not get notes by notebookId"); }
+    );
+  }
+
   state = 'active';
 }

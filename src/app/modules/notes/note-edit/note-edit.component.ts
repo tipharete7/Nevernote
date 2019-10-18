@@ -21,7 +21,8 @@ export class NoteEditComponent {
   note: Note;
   editMode: boolean = false;
   notebooks: Notebook[] = [];
-  selectedNotebook : Notebook;
+  //selectedNotebook : Notebook;
+  selectPlaceholder : string;
   snackbarMessage : string = "";
   public Editor = ClassicEditor;
 
@@ -30,23 +31,34 @@ export class NoteEditComponent {
      public activatedRoute: ActivatedRoute, private notebookService: NotebookService,
      private snackBar: MatSnackBar, private translate: TranslateService) {
       this.note = new Note();
-      this.translate.get("APP.NEW_NOTE.EDITOR_PH").subscribe(res =>{
-        this.note.content = res;
-      })
+      if(this.note.content) { this.setNotePlaceholder() };
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       let id = +params["id"];
       this.getNoteById(id);
-      this.getNotebooks();
-    })
+    });
+    this.setSelectPlaceholder();
+    this.getNotebooks();
+  }
+
+  private setNotePlaceholder(){
+    this.translate.get("APP.NEW_NOTE.EDITOR_PH").subscribe(res =>{
+      this.note.content = res;
+    });
   }
 
   private getNoteById(id: any) {
     this.noteService.getNoteById(id).subscribe(data => {
       this.note = data;
     }, error => console.error(error));
+  }
+
+  setSelectPlaceholder(){
+    this.translate.get("APP.SELECT_NOTEBOOK.ADD_NOTE_TO_NOTEBOOK").subscribe(res =>{
+      this.selectPlaceholder = res;
+    })
   }
 
   createNote() {
@@ -91,10 +103,10 @@ export class NoteEditComponent {
     );
   }
 
-  addNoteToNotebook(){
-    this.noteService.addNoteToNotebook(this.note.id, this.selectedNotebook.id).subscribe(
+  addNoteToNotebook(notebook : Notebook){
+    this.noteService.addNoteToNotebook(this.note.id, notebook.id).subscribe(
       res => {
-        this.showAddedToNotebookSnackbar(this.selectedNotebook.name);
+        this.showAddedToNotebookSnackbar(notebook.name);
       }, err => { console.error(err); }
     );
   }

@@ -5,6 +5,12 @@
     </button>
   </div>
 
+  <div class="row filterBar">
+      <app-notebooks-select *ngIf="notebooks" [selectPlaceholder]="selectPlaceholder" [notebooks]="notebooks"
+          (selectNotebookEvent)="selectNotebook($event)">
+      </app-notebooks-select>
+  </div>
+
   <div class="row">
     <ng-container class="rowsContainer" *ngFor="let note of notes; let i = index">
       <app-note [@notesAnim]="state" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 cards" [note]="note"

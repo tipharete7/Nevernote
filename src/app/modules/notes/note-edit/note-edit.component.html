@@ -2,21 +2,14 @@
   <form #f="ngForm" (ngSubmit)="f.form.valid && saveNote()">
     <div>
       <input type="text" class="titlelnput form-control" placeholder="Title" name="title" [(ngModel)]="note.title">
-      <!--if no title save note with default title : sans   {{ 'APP.NEW_NOTE.UNTITLED' | translate }}-->
     </div>
     <div class="contentBody">
       <ckeditor [editor]="Editor" name="content" [(ngModel)]="note.content"></ckeditor>
     </div>
     <div>
       <button class="btn btn-primary" type="submit">{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
-      <mat-form-field class="moveToNotebookSelect">
-        <mat-label>{{ 'APP.NOTE_EDIT.ADD_NOTE_TO_NOTEBOOK' | translate }}</mat-label>
-        <mat-select (selectionChange)="addNoteToNotebook()" [(ngModel)]="selectedNotebook" name="notebookName">
-          <mat-option *ngFor="let notebook of notebooks" [value]="notebook">
-            {{notebook.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <app-notebooks-select *ngIf="notebooks" [selectPlaceholder]="selectPlaceholder"  [notebooks]="notebooks" (selectNotebookEvent)="addNoteToNotebook($event)">
+      </app-notebooks-select>
     </div>
   </form>
 </div>

@@ -12,11 +12,15 @@
           "EDITOR_PH" : "Ecrire le contenu ici."
         },
         "NOTE_EDIT" : {
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ value }}"
+        },
+        "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Déplacer vers un carnet",
-          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacé vers le carnet {{ value }}"
+          "FILTER_BY_NOTEBOOK" : "Filter par carnet"
         },
         "ALL_NOTES" : {
-            "NEW_NOTE" : "Nouvelle Note"
+            "NEW_NOTE" : "Nouvelle Note",
+            "ZERO_NOTES" : "Aucune note à afficher"
         },
         "NOTEBOOKS" : {
             "NEW_NOTEBOOK" : "Nouveau Carnet de Notes"
