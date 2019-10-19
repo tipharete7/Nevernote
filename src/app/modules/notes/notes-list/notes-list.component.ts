@@ -42,7 +42,7 @@ export class NotesListComponent implements OnInit {
   searchQuery : string;
 
   constructor(private router: Router, private noteService: NoteService,
-    private notebookService : NotebookService, public dialog: MatDialog, private translate: TranslateService) {
+    private notebookService : NotebookService, public dialog: MatDialog, private translateService: TranslateService) {
   }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class NotesListComponent implements OnInit {
   }
 
   setSelectPlaceholder(){
-    this.translate.get("APP.SELECT_NOTEBOOK.FILTER_BY_NOTEBOOK").subscribe(res =>{
+    this.translateService.get("APP.SELECT_NOTEBOOK.FILTER_BY_NOTEBOOK").subscribe(res =>{
       this.selectPlaceholder = res;
     })
   }
