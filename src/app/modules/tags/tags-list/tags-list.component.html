@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="pull-right">
+    <button mat-icon-button (click)="openNewTagDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <ng-container class="rowsContainer" *ngFor="let tag of tags; let i = index">
+      <app-tag [@tagsAnim]="state" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 cards" [tag]="tag"
+        (tagUpdateEvent)="updateTag($event)" (tagDeleteEvent)="tagTag($event)"></app-tag>
+    </ng-container>
+  </div>
+</div>

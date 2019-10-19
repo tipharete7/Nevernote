@@ -1,0 +1,13 @@
+<!--Tag ngContainer-->
+<div id="tagItem" class="card box-shadow hvr-grow-shadow">
+  <div class="card-body">
+      <input type="text"
+       [(ngModel)]="tag.name"
+       (change)="updateTag()"
+       class="input-label-lg"
+       maxlength="18" />
+      <a (click)="deleteTag()" class="pull-right text-danger">
+        <i class="fa fa-trash-o"></i>
+      </a>
+  </div>
+</div>

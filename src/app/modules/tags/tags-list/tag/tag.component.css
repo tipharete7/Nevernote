@@ -1,0 +1,21 @@
+#tagItem {
+    background-color: #2A3031;
+    margin-top: 30px;
+}
+
+#tagItem input {
+    width: 80%;
+    background: transparent;
+    border: none;
+    color:whitesmoke;
+    text-align: center;
+}
+
+#tagItem a {
+    visibility: hidden;
+    cursor: pointer;
+}
+
+#tagItem:hover a {
+    visibility: visible;
+}
