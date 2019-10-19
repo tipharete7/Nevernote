@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
+import { NotebookService } from './notebooks.service';
 import { NotebooksListComponent } from './notebook-list/notebooks-list.component';
 import { NotebookComponent } from './notebook-list/notebook/notebook.component';
-import { NewNotebookDialog } from './new-notebook-dialog/new-notebook-dialog';
-import { NotebookService } from './notebooks.service';
 
 const routes: Routes = [
   {
@@ -15,12 +14,11 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NotebooksListComponent, NotebookComponent, NewNotebookDialog],
+  declarations: [NotebooksListComponent, NotebookComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  providers: [NotebookService],
-  entryComponents: [NewNotebookDialog]
+  providers: [NotebookService]
 })
 export class NotebooksModule { }

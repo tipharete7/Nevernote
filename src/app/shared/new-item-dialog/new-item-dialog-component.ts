@@ -2,18 +2,20 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
-  notebookName : string;
+  title : string;
+  itemName : string;
 }
 
 @Component({
-  selector: 'new-notebook-popup',
-  templateUrl: './new-notebook-dialog.html',
-  styleUrls: ['./new-notebook-dialog.css']
+  selector: 'new-item-popup',
+  templateUrl: './new-item-dialog-component.html',
+  styleUrls: ['./new-item-dialog-component.css']
 })
-export class NewNotebookDialog {
+export class NewItemDialogComponent {
+
 
   constructor(
-    public dialogRef: MatDialogRef<NewNotebookDialog>,
+    public dialogRef: MatDialogRef<NewItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

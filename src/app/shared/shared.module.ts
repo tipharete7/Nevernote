@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from './../material.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { NewItemDialogComponent } from './new-item-dialog/new-item-dialog-component';
 
 @NgModule({
-  declarations : [ ConfirmationDialogComponent ],
-  imports : [ MaterialModule, TranslateModule ],
+  declarations : [ ConfirmationDialogComponent, NewItemDialogComponent ],
+  imports : [ MaterialModule, TranslateModule,FormsModule ],
   exports:      [ CommonModule, FormsModule, TranslateModule, MaterialModule, ConfirmationDialogComponent ],
-  entryComponents: [ ConfirmationDialogComponent ]
+  entryComponents: [ ConfirmationDialogComponent, NewItemDialogComponent ]
 })
 export class SharedModule { }

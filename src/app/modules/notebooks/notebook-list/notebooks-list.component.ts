@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Notebook } from '../../../model/notebook.model';
 import { NotebookService } from '../notebooks.service';
-import { NewNotebookDialog } from '../new-notebook-dialog/new-notebook-dialog';
+import { TranslateService } from '@ngx-translate/core';
+import { NewItemDialogComponent } from '../../../shared/new-item-dialog/new-item-dialog-component';
 import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
-
 
 @Component({
   selector: 'app-notebooks-list',
@@ -32,18 +32,28 @@ export class NotebooksListComponent implements OnInit {
   notebooks: Notebook[] = [];
   selectedNotebook: Notebook;
   notebookName: string;
+  newNotebookTitle: string;
 
-  constructor(private router: Router, private notebookService: NotebookService, public dialog: MatDialog) { }
+  constructor(private router: Router, private notebookService: NotebookService,
+     public dialog: MatDialog, private translateService: TranslateService) { }
 
   ngOnInit() {
     this.getNotebooks();
   }
 
+  setNewNotebookDialogPlaceholder(){
+    this.translateService.get("APP.NOTEBOOKS.NEW_NOTEBOOK").subscribe(res =>{
+      this.newNotebookTitle = res;
+    });
+  }
+
   openNewNotebookDialog() {
-    const dialogRef = this.dialog.open(NewNotebookDialog, {
-      width: '300px',
-      height: '250px',
-      data: { notebookName: this.notebookName }
+    this.setNewNotebookDialogPlaceholder();
+    console.log("this.newNotebookTitle", this.newNotebookTitle);
+
+    const dialogRef = this.dialog.open(NewItemDialogComponent, {
+      width: '250px',
+      data: { title : this.newNotebookTitle, itemName: this.notebookName }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -58,19 +68,18 @@ export class NotebooksListComponent implements OnInit {
     let notebook = new Notebook();
     notebook.name = this.notebookName;
     notebook.creationDate = new Date();
-    console.log(JSON.stringify(notebook));
     this.notebookService.createNotebook(notebook).subscribe(
       data => {
         this.notebooks.push(notebook);
       },
-      error => { alert("An error occured while creating notebook " + JSON.stringify(error)); }
+      err => { console.error("An error occured while creating notebook "); }
     )
   }
 
   getNotebooks() {
     this.notebookService.getNotebooks().subscribe(
       data => { this.notebooks = data },
-      error => { alert("An error occured while getting list of notebooks " + JSON.stringify(error)); }
+      err => { console.error("An error occured while getting list of notebooks "); }
     )
   }
 
@@ -87,7 +96,7 @@ export class NotebooksListComponent implements OnInit {
             let indexOfNote = this.notebooks.indexOf(notebook);
             this.notebooks.splice(indexOfNote, 1);
           },
-          error => { alert("An error has occurred while deleting this notebook " + error); }
+          err => { console.error("An error has occurred while deleting this notebook "); }
         );
       }
     });
@@ -104,7 +113,7 @@ export class NotebooksListComponent implements OnInit {
         this.notebookService.updateNotebook(notebook).subscribe(
           data => {
           },
-          err => { alert("An error occurred while updating the notebook " + JSON.stringify(err)); });
+          err => { console.error("An error occurred while updating the notebook "); });
       }
     });
   }
