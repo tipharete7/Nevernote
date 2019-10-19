@@ -39,6 +39,7 @@ export class NotesListComponent implements OnInit {
   selectPlaceholder: string;
   selectedNote: Note;
   selectedNotebook : Notebook;
+  searchQuery : string;
 
   constructor(private router: Router, private noteService: NoteService,
     private notebookService : NotebookService, public dialog: MatDialog, private translate: TranslateService) {

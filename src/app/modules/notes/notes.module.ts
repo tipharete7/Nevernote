@@ -9,6 +9,7 @@ import { ConfirmationDialogComponent } from './../../shared/confirmation-dialog/
 import { NotebookService } from './../notebooks/notebooks.service';
 import { NoteService } from './notes.service';
 import { NotebooksSelectComponent } from './notebooks-select/notebooks-select.component';
+import { SearchNotesPipe } from './notes-list/search-notes.pipe';
 
 
 const routes: Routes = [
@@ -27,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent],
+  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent, SearchNotesPipe],
   imports: [
     RouterModule.forChild(routes),
     SharedModule,

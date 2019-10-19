@@ -8,4 +8,12 @@
 
 .filterBar {
   margin: auto;
+  display : flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.searchInput > input{
+  margin-top: 6%;
+  padding : 10px;
 }

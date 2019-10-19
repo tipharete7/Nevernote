@@ -6,13 +6,21 @@
   </div>
 
   <div class="row filterBar">
+    <div class="searchInput">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{ 'APP.ALL_NOTES.SEARCH_NOTES' | translate }}"
+           [(ngModel)]="searchQuery" name="searchQuery" autocomplete="off">
+        </mat-form-field>
+    </div>
+    <div>
       <app-notebooks-select *ngIf="notebooks" [selectPlaceholder]="selectPlaceholder" [notebooks]="notebooks"
-          (selectNotebookEvent)="selectNotebook($event)">
+        (selectNotebookEvent)="selectNotebook($event)">
       </app-notebooks-select>
+    </div>
   </div>
 
   <div class="row">
-    <ng-container class="rowsContainer" *ngFor="let note of notes; let i = index">
+    <ng-container class="rowsContainer" *ngFor="let note of notes | searchPipe: searchQuery; let i = index">
       <app-note [@notesAnim]="state" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 cards" [note]="note"
         (noteDeleteEvent)="deleteNote($event)"></app-note>
     </ng-container>

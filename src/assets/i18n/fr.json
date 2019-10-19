@@ -20,7 +20,8 @@
         },
         "ALL_NOTES" : {
             "NEW_NOTE" : "Nouvelle Note",
-            "ZERO_NOTES" : "Aucune note à afficher"
+            "ZERO_NOTES" : "Aucune note à afficher",
+            "SEARCH_NOTES" : "Rechercher"
         },
         "NOTEBOOKS" : {
             "NEW_NOTEBOOK" : "Nouveau Carnet de Notes"
