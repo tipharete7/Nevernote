@@ -33,6 +33,8 @@ export class TagsListComponent implements OnInit {
   selectedtag: Tag;
   tagName: string;
   newTagTitle: string;
+  confirmUpdateMessage: string;
+  confirmDeleteMessage: string;
 
 
   constructor(private router: Router, private tagService: TagService, public dialog: MatDialog,
@@ -55,12 +57,23 @@ export class TagsListComponent implements OnInit {
   setNewTagDialogPlaceholder() {
     this.translateService.get("APP.TAGS.NEW_TAG").subscribe(res => {
       this.newTagTitle = res;
-    })
+    });
+  }
+
+  setUpdateTagPlaceholder() {
+    this.translateService.get("APP.TAGS.CONFIRM_UPDATE_TAG").subscribe((res : string) => {
+       this.confirmUpdateMessage = res;
+    });
+  }
+
+  setDeleteTagPlaceholder() {
+    this.translateService.get("APP.TAGS.CONFIRM_DELETE_TAG").subscribe((res: string) => {
+        this.confirmDeleteMessage =  res;
+    });
   }
 
   openNewTagDialog() {
     this.setNewTagDialogPlaceholder();
-    console.log("this.newTagTitle", this.newTagTitle);
 
     const dialogRef = this.dialog.open(NewItemDialogComponent, {
       width: '250px',
@@ -88,10 +101,11 @@ export class TagsListComponent implements OnInit {
 
 
   deleteTag(tag: Tag) {
+    this.setDeleteTagPlaceholder();
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
-      height: '120px',
-      data: 'Confirm Tag deletion ?'
+      width: '300px',
+      height: '150px',
+      data: this.confirmDeleteMessage
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -107,11 +121,12 @@ export class TagsListComponent implements OnInit {
     });
   }
 
-  updateTag(tag) {
+  updateTag(tag: Tag) {
+    this.setUpdateTagPlaceholder();
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
-      height: '120px',
-      data: 'Confirm Tag update ?'
+      width: '300px',
+      height: '150px',
+      data: this.confirmUpdateMessage
     });
 
     dialogRef.afterClosed().subscribe(result => {

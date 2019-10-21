@@ -2,21 +2,21 @@
     "APP": {
         "TITLE" : "Nevernote",
         "SIDENAV_LINKS" : {
-            "ALL_NOTES" : "Tout les Notes",
+            "ALL_NOTES" : "Notes",
             "NOTEBOOKS" : "Carnets de Notes",
             "TAGS" : "Étiquettes"
         },
         "NEW_NOTE" : {
           "UNTITLED" : "Sans Titre",
           "SAVE_NOTE" : "Enregistrer",
-          "EDITOR_PH" : "Ecrire le contenu ici."
+          "EDITOR_PH" : "Ecrivez votre contenu ici."
         },
         "NOTE_EDIT" : {
           "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ value }}"
         },
         "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Déplacer vers un carnet",
-          "FILTER_BY_NOTEBOOK" : "Filter par carnet"
+          "FILTER_BY_NOTEBOOK" : "Filtrer par carnet"
         },
         "ALL_NOTES" : {
             "NEW_NOTE" : "Nouvelle Note",
@@ -27,7 +27,10 @@
             "NEW_NOTEBOOK" : "Nouveau Carnet de Notes"
         },
         "TAGS" : {
-            "NEW_TAG" : "Nouvelle Étiquette"
+            "NEW_TAG" : "Nouvelle Étiquette",
+            "FILTER_BY_TAG" : "Filtrer par étiquettes",
+            "CONFIRM_UPDATE_TAG" : "Modifier cette étiquette ?",
+            "CONFIRM_DELETE_TAG" : "Supprimer cette étiquette ?"
         },
         "CONFIRMATION_DIALOG" : {
           "CONFIRM" : "Confirmer",

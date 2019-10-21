@@ -27,7 +27,10 @@
             "NEW_NOTEBOOK" : "New Notebook"
         },
         "TAGS" : {
-            "NEW_TAG" : "New Tag"
+            "NEW_TAG" : "New Tag",
+            "FILTER_BY_TAG" : "Filter by tags",
+            "CONFIRM_UPDATE_TAG" : "Update this tag ?",
+            "CONFIRM_DELETE_TAG" : "Delete this tag ?"
         },
         "CONFIRMATION_DIALOG" : {
           "CONFIRM" : "Confirm",
