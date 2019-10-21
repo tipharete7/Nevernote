@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Notebook } from './../../../model/notebook.model';
+import { Notebook } from './../../../../model/notebook.model';
 
 @Component({
   selector: 'app-notebooks-select',
@@ -10,7 +10,7 @@ export class NotebooksSelectComponent  {
 
 
   @Input() notebooks: Notebook[];
-  @Input() selectPlaceholder: string;
+  @Input() selectNotebookPlaceholder: string;
   @Output() selectedNotebook : Notebook;
   @Output() selectNotebookEvent: EventEmitter<Notebook> = new EventEmitter<Notebook>();
 
