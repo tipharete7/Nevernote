@@ -35,11 +35,13 @@ export class NoteEditComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      if (!params["id"]) {
+      if (params["id"]) {
         let id = +params["id"];
         this.getNoteById(id);
+        this.editMode = true;
       }
     });
+    console.log("editmode : ", this.editMode);
 
     this.setSelectNotebookPlaceholder();
     this.getNotebooks();
@@ -67,7 +69,6 @@ export class NoteEditComponent {
   }
 
   createNote() {
-    this.note = new Note();
     this.noteService.createNote(this.note).subscribe(
       data => {
         this.navigateToNotesPage();
