@@ -41,10 +41,10 @@ export class NoteEditComponent {
         this.editMode = true;
       }
     });
-    console.log("editmode : ", this.editMode);
-
-    this.setSelectNotebookPlaceholder();
-    this.getNotebooks();
+    if(this.editMode){
+      this.setSelectNotebookPlaceholder();
+      this.getNotebooks();
+    }
   }
 
 
