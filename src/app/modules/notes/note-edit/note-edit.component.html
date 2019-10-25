@@ -8,8 +8,25 @@
     </div>
     <div>
       <button class="btn btn-primary" type="submit">{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
-      <app-notebooks-select *ngIf="editMode && notebooks" [selectNotebookPlaceholder]="selectNotebookPlaceholder"  [notebooks]="notebooks" (selectNotebookEvent)="addNoteToNotebook($event)">
+
+      <app-notebooks-select *ngIf="editMode && notebooks" [selectNotebookPlaceholder]="selectNotebookPlaceholder"
+        [notebooks]="notebooks" (selectNotebookEvent)="addNoteToNotebook($event)">
       </app-notebooks-select>
+
+      <mat-form-field class="tagsChip">
+        <mat-chip-list #tagList aria-label="Tag selection">
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+            (removed)="removeTag(tag)">{{tag.name}}
+            <mat-icon matChipRemove *ngIf="removable">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</mat-icon>
+          </mat-chip>
+          <input placeholder="{{ 'APP.TAGS.NEW_TAG' | translate }}" #tagInput [formControl]="tagCtrl"
+            [matAutocomplete]="auto" [matChipInputFor]="tagList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">{{tag.name}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
     </div>
   </form>
 </div>

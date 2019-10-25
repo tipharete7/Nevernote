@@ -6,10 +6,12 @@ import { NoteComponent } from './notes-list/note/note.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NoteEditComponent } from './note-edit/note-edit.component';
 import { ConfirmationDialogComponent } from './../../shared/confirmation-dialog/confirmation-dialog.component';
-import { NotebookService } from './../notebooks/notebooks.service';
 import { NoteService } from './notes.service';
-import { NotebooksSelectComponent } from './notebooks-select/notebooks-select.component';
+import { NotebookService } from './../notebooks/notebooks.service';
+import { TagService } from './../tags/tags.service';
+import { NotebooksSelectComponent } from './notes-list/notebooks-select/notebooks-select.component';
 import { SearchNotesPipe } from './notes-list/search-notes.pipe';
+import { TagsSelectComponent } from './notes-list/tags-select/tags-select.component';
 
 
 const routes: Routes = [
@@ -18,22 +20,22 @@ const routes: Routes = [
         component: NotesListComponent
       },
       {
-        path: ':id',
+        path: 'new',
         component: NoteEditComponent
       },
       {
-        path: 'new',
+        path: ':id',
         component: NoteEditComponent
       }
 ];
 
 @NgModule({
-  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent, SearchNotesPipe],
+  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent, SearchNotesPipe, TagsSelectComponent],
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
     CKEditorModule
   ],
-  providers: [NoteService, NotebookService]
+  providers: [NoteService, NotebookService, TagService]
 })
 export class NotesModule { }

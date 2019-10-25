@@ -26,3 +26,8 @@
 .invalid-input {
     border-color: rgb(245, 22, 22);
 }
+
+.tagsChip {
+  margin-left : 2%;
+  width : 30%;
+}

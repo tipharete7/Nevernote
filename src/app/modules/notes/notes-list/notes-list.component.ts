@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Note } from '../../../model/note.model';
 import { Notebook } from './../../../model/notebook.model';
+import { Tag } from './../../../model/tag.model';
 import { NoteService } from '../notes.service';
 import { NotebookService } from './../../notebooks/notebooks.service';
+import { TagService } from './../../tags/tags.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
 
@@ -36,24 +38,35 @@ export class NotesListComponent implements OnInit {
 
   notes: Note[] = [];
   notebooks: Notebook[] = [];
-  selectPlaceholder: string;
+  tags: Tag[] = [];
+  selectNotebookPlaceholder: string;
+  selectTagsPlaceholder: string;
   selectedNote: Note;
   selectedNotebook : Notebook;
+  selectedTag : Tag;
   searchQuery : string;
 
-  constructor(private router: Router, private noteService: NoteService,
+  constructor(private router: Router, private noteService: NoteService, private tagService: TagService,
     private notebookService : NotebookService, public dialog: MatDialog, private translateService: TranslateService) {
   }
 
   ngOnInit() {
     this.getNotes();
-    this.setSelectPlaceholder();
+    this.setSelectNotebookPlaceholder();
+    this.setSelectTagPlaceholder();
     this.getNotebooks();
+    this.getTags();
   }
 
-  setSelectPlaceholder(){
+  setSelectNotebookPlaceholder(){
     this.translateService.get("APP.SELECT_NOTEBOOK.FILTER_BY_NOTEBOOK").subscribe(res =>{
-      this.selectPlaceholder = res;
+      this.selectNotebookPlaceholder = res;
+    })
+  }
+
+  setSelectTagPlaceholder(){
+    this.translateService.get("APP.TAGS.FILTER_BY_TAG").subscribe(res =>{
+      this.selectTagsPlaceholder = res;
     })
   }
 
@@ -66,7 +79,13 @@ export class NotesListComponent implements OnInit {
   getNotebooks() {
     this.notebookService.getNotebooks().subscribe(
       data => { this.notebooks = data },
-      err => { console.error("An error has occured while getting list of notes"); });
+      err => { console.error("An error has occured while getting list of notebooks"); });
+  }
+
+  getTags() {
+    this.tagService.getTags().subscribe(
+      data => { this.tags = data },
+      err => { console.error("An error has occured while getting list of tags"); });
   }
 
   deleteNote(note: Note) {
@@ -88,11 +107,19 @@ export class NotesListComponent implements OnInit {
     });
   }
 
-  selectNotebook(notebook : Notebook){
+  selectNotebook(notebook: Notebook){
     this.notebookService.getNotesByNotebookId(notebook.id).subscribe(
       res => {
           this.notes = res;
       }, err => { console.error("could not get notes by notebookId"); }
+    );
+  }
+
+  selectTag(tag: Tag){
+    this.tagService.getNotesByTagId(tag.id).subscribe(
+      res => {
+          this.notes = res;
+      }, err => { console.error("could not get notes by tagId"); }
     );
   }
 
