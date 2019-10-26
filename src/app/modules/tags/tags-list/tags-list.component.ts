@@ -36,7 +36,6 @@ export class TagsListComponent implements OnInit {
   confirmUpdateMessage: string;
   confirmDeleteMessage: string;
 
-
   constructor(private router: Router, private tagService: TagService, public dialog: MatDialog,
     private translateService: TranslateService) {
   }
@@ -48,8 +47,8 @@ export class TagsListComponent implements OnInit {
   getTags() {
     this.tagService.getTags().subscribe(
       data => { this.tags = data },
-      err => {
-        console.error("An error has occured while getting list of tags");
+      error => {
+        console.error("An error has occured while getting list of tags", error);
       }
     );
   }
@@ -60,14 +59,14 @@ export class TagsListComponent implements OnInit {
     });
   }
 
-  setUpdateTagPlaceholder() {
-    this.translateService.get("APP.TAGS.CONFIRM_UPDATE_TAG").subscribe((res : string) => {
+  setUpdateTagPlaceholder(tagName: string) {
+    this.translateService.get("APP.TAGS.CONFIRM_UPDATE_TAG", { tagName : tagName }).subscribe((res : string) => {
        this.confirmUpdateMessage = res;
     });
   }
 
-  setDeleteTagPlaceholder() {
-    this.translateService.get("APP.TAGS.CONFIRM_DELETE_TAG").subscribe((res: string) => {
+  setDeleteTagPlaceholder(tagName: string) {
+    this.translateService.get("APP.TAGS.CONFIRM_DELETE_TAG", { tagName : tagName }).subscribe((res: string) => {
         this.confirmDeleteMessage =  res;
     });
   }
@@ -95,16 +94,17 @@ export class TagsListComponent implements OnInit {
       data => {
         this.tags.push(tag);
       },
-      err => { console.error("An error occured while creating tag "); }
+      error => { console.error("An error occured while creating tag ", error); }
     );
   }
 
 
   deleteTag(tag: Tag) {
-    this.setDeleteTagPlaceholder();
+    this.setDeleteTagPlaceholder(tag.name);
+
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
-      height: '150px',
+      width: '370',
+      height: '130px',
       data: this.confirmDeleteMessage
     });
 
@@ -115,17 +115,18 @@ export class TagsListComponent implements OnInit {
             let indexOfTag = this.tags.indexOf(tag);
             this.tags.splice(indexOfTag, 1);
           },
-          err => { console.error("An error has occurred while deleting the tag"); }
+          error => { console.error("An error has occurred while deleting the tag", error); }
         );
       }
     });
   }
 
   updateTag(tag: Tag) {
-    this.setUpdateTagPlaceholder();
+    this.setUpdateTagPlaceholder(tag.name);
+
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
-      height: '150px',
+      width: '280px',
+      height: '120px',
       data: this.confirmUpdateMessage
     });
 
@@ -135,8 +136,8 @@ export class TagsListComponent implements OnInit {
           data => {
             console.log(JSON.stringify(data));
           },
-          err => {
-            console.error("An error occurred while updating the tag");
+          error => {
+            console.error("An error occurred while updating the tag", error);
           });
       }
     });

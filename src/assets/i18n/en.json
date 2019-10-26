@@ -12,7 +12,7 @@
           "EDITOR_PH" : "Note content here."
         },
         "NOTE_EDIT" : {
-          "NOTE_MOVED_TO_NOTEBOOK" : "Note moved to {{ value }} notebook"
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note moved to {{ notebookName }} notebook"
         },
         "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Move to notebook",
@@ -24,13 +24,15 @@
             "SEARCH_NOTES" : "Search"
         },
         "NOTEBOOKS" : {
-            "NEW_NOTEBOOK" : "New Notebook"
+            "NEW_NOTEBOOK" : "New Notebook",
+            "CONFIRM_UPDATE_NOTEBOOK" : "Are you sure you want to update this notebook ?",
+            "CONFIRM_DELETE_NOTEBOOK" : "Deleting {{ notebookName }} notebook will delete all it's notes !"
         },
         "TAGS" : {
             "NEW_TAG" : "New Tag",
             "FILTER_BY_TAG" : "Filter by tags",
             "CONFIRM_UPDATE_TAG" : "Update this tag ?",
-            "CONFIRM_DELETE_TAG" : "Delete this tag ?"
+            "CONFIRM_DELETE_TAG" : "Are you sure you want to delete {{ tagName }} ?"
         },
         "CONFIRMATION_DIALOG" : {
           "CONFIRM" : "Confirm",

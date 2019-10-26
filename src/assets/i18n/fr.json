@@ -12,7 +12,7 @@
           "EDITOR_PH" : "Ecrivez votre contenu ici."
         },
         "NOTE_EDIT" : {
-          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ value }}"
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ notebookName }}"
         },
         "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Déplacer vers un carnet",
@@ -24,13 +24,15 @@
             "SEARCH_NOTES" : "Rechercher"
         },
         "NOTEBOOKS" : {
-            "NEW_NOTEBOOK" : "Nouveau Carnet de Notes"
+            "NEW_NOTEBOOK" : "Nouveau Carnet de Notes",
+            "CONFIRM_UPDATE_NOTEBOOK" : "Êtes-vous sûr de vouloir modifier ce carnet de notes ?",
+            "CONFIRM_DELETE_NOTEBOOK" : "La suppression de {{ notebookName }} entraînera la suppression de tous ses notes !"
         },
         "TAGS" : {
             "NEW_TAG" : "Nouvelle Étiquette",
             "FILTER_BY_TAG" : "Filtrer par étiquettes",
-            "CONFIRM_UPDATE_TAG" : "Modifier cette étiquette ?",
-            "CONFIRM_DELETE_TAG" : "Supprimer cette étiquette ?"
+            "CONFIRM_UPDATE_TAG" : "Êtes-vous sûr de vouloir modifier cette étiquette ?",
+            "CONFIRM_DELETE_TAG" : "Êtes-vous sûr de vouloir supprimer {{ tagName }} ?"
         },
         "CONFIRMATION_DIALOG" : {
           "CONFIRM" : "Confirmer",

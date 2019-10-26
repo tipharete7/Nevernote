@@ -33,6 +33,9 @@ export class NotebooksListComponent implements OnInit {
   selectedNotebook: Notebook;
   notebookName: string;
   newNotebookTitle: string;
+  updateNotebookMessage: string;
+  deleteNotebookMessage: string;
+
 
   constructor(private router: Router, private notebookService: NotebookService,
      public dialog: MatDialog, private translateService: TranslateService) { }
@@ -47,9 +50,20 @@ export class NotebooksListComponent implements OnInit {
     });
   }
 
+  setUpdateNotebookDialogMessage(){
+    this.translateService.get("APP.NOTEBOOKS.CONFIRM_UPDATE_NOTEBOOK").subscribe(res =>{
+      this.updateNotebookMessage = res;
+    });
+  }
+
+  setDeleteNotebookDialogMessage(notebookName: string){
+    this.translateService.get("APP.NOTEBOOKS.CONFIRM_DELETE_NOTEBOOK", { notebookName : notebookName }).subscribe(res =>{
+      this.deleteNotebookMessage = res;
+    });
+  }
+
   openNewNotebookDialog() {
     this.setNewNotebookDialogPlaceholder();
-    console.log("this.newNotebookTitle", this.newNotebookTitle);
 
     const dialogRef = this.dialog.open(NewItemDialogComponent, {
       width: '250px',
@@ -72,22 +86,24 @@ export class NotebooksListComponent implements OnInit {
       data => {
         this.notebooks.push(notebook);
       },
-      err => { console.error("An error occured while creating notebook "); }
+      error => { console.error("An error occured while creating notebook ", error); }
     )
   }
 
   getNotebooks() {
     this.notebookService.getNotebooks().subscribe(
       data => { this.notebooks = data },
-      err => { console.error("An error occured while getting list of notebooks "); }
+      error => { console.error("An error occured while getting list of notebooks ", error); }
     )
   }
 
   deleteNotebook(notebook: Notebook) {
+    this.setDeleteNotebookDialogMessage(notebook.name);
+
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
-      height: '120px',
-      data: 'Confirm notebook deletion ?'
+      width: '400px',
+      height: '170px',
+      data: this.deleteNotebookMessage
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -96,24 +112,26 @@ export class NotebooksListComponent implements OnInit {
             let indexOfNote = this.notebooks.indexOf(notebook);
             this.notebooks.splice(indexOfNote, 1);
           },
-          err => { console.error("An error has occurred while deleting this notebook "); }
+          error => { console.error("An error has occurred while deleting this notebook ", error); }
         );
       }
     });
 
   }
   updateNotebook(notebook: Notebook) {
+    this.setUpdateNotebookDialogMessage();
+
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
-      height: '120px',
-      data: 'Confirm notebook update ?'
+      width: '400px',
+      height: '170px',
+      data: this.updateNotebookMessage
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.notebookService.updateNotebook(notebook).subscribe(
           data => {
           },
-          err => { console.error("An error occurred while updating the notebook "); });
+          error => { console.error("An error occurred while updating the notebook ", error); });
       }
     });
   }
