@@ -17,7 +17,7 @@
         <mat-chip-list #tagList aria-label="Tag selection">
           <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
             (removed)="removeTag(tag)">{{tag.name}}
-            <mat-icon matChipRemove *ngIf="removable">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</mat-icon>
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input placeholder="{{ 'APP.TAGS.NEW_TAG' | translate }}" #tagInput [formControl]="tagCtrl"
             [matAutocomplete]="auto" [matChipInputFor]="tagList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
