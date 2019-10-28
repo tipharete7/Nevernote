@@ -47,12 +47,13 @@ export class NoteEditComponent {
     private router: Router, private noteService: NoteService, private tagsService: TagService,
     public activatedRoute: ActivatedRoute, private notebookService: NotebookService,
     private snackBar: MatSnackBar, private translate: TranslateService) {
-        this.note = new Note();
+       this.note = new Note();
   }
 
   ngOnInit() {
     this.setEditorPlaceholder();
     this.setNoteToEditor();
+
     if (this.editMode) {
       this.setSelectNotebookPlaceholder();
       this.getNotebooks();
@@ -93,6 +94,7 @@ export class NoteEditComponent {
     if (id) {
       this.noteService.getNoteById(id).subscribe(data => {
         this.note = data;
+        this.tags = this.note.tags;
       }, error => console.error("An error occurred while retreiving note by id", error));
     }
   }
@@ -119,6 +121,7 @@ export class NoteEditComponent {
 
   saveNote() {
     this.editMode ? this.updateNote(this.note) : this.createNote();
+    //TODO : AddTagsToUpdate if this.tags have new or removed tags
     this.addTagsToUpdatedNote(this.tags);
   }
 
@@ -144,7 +147,7 @@ export class NoteEditComponent {
   }
 
   showAddedToNotebookSnackbar(notebookName: string) {
-    this.translate.get("APP.NOTE_EDIT.NOTE_MOVED_TO_NOTEBOOK", { value: notebookName }).subscribe(res => {
+    this.translate.get("APP.NOTE_EDIT.NOTE_MOVED_TO_NOTEBOOK", { notebookName : notebookName }).subscribe(res => {
       this.snackbarMessage = res;
     });
 
@@ -230,10 +233,9 @@ export class NoteEditComponent {
   }
 
   removeTag(tag: Tag): void {
-    console.log("tag to remove : ", JSON.stringify(tag));
     const index = this.tags.indexOf(tag);
     if (index >= 0) {
-      this.deleteTag(tag.id);
+      this.editMode ? this.removeTagFromNote(tag) : this.deleteTag(tag.id);
       this.tags.splice(index, 1);
     }
   }
@@ -248,7 +250,6 @@ export class NoteEditComponent {
     if(typeof value === 'object') {
       return;
     }
-    console.log("value from filter : ", value);
     return this.allTags.filter(tag => tag.name.toLowerCase().includes(value.toLowerCase()));
   }
 }
