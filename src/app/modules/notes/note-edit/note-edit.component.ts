@@ -25,6 +25,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 export class NoteEditComponent {
 
   note: Note;
+  tag: Tag;
   editMode: boolean = false;
   notebooks: Notebook[] = [];
   selectNotebookPlaceholder: string;
@@ -47,7 +48,7 @@ export class NoteEditComponent {
     private router: Router, private noteService: NoteService, private tagsService: TagService,
     public activatedRoute: ActivatedRoute, private notebookService: NotebookService,
     private snackBar: MatSnackBar, private translate: TranslateService) {
-       this.note = new Note();
+        this.note = new Note();
   }
 
   ngOnInit() {
@@ -57,6 +58,9 @@ export class NoteEditComponent {
     if (this.editMode) {
       this.setSelectNotebookPlaceholder();
       this.getNotebooks();
+    }
+    else {
+      this.createNote();
     }
     this.getTags();
     this.filterTagsForAutocomplete();
@@ -75,16 +79,22 @@ export class NoteEditComponent {
   //////////////// i18n Placeholder ///////////////////////
 
   private setEditorPlaceholder() {
-    if (!this.note.content || this.note.content === undefined){
+    if (!this.note.content || this.note.content === undefined) {
       this.translate.get("APP.NEW_NOTE.EDITOR_PH").subscribe(res => {
         this.note.content = res;
       });
     }
   }
 
-  setSelectNotebookPlaceholder() {
+  private setSelectNotebookPlaceholder() {
     this.translate.get("APP.SELECT_NOTEBOOK.ADD_NOTE_TO_NOTEBOOK").subscribe(res => {
       this.selectNotebookPlaceholder = res;
+    })
+  }
+
+  private getUntitledNotePH() {
+    this.translate.get("APP.NEW_NOTE.UNTITLED").subscribe(res => {
+      this.note.title = res;
     })
   }
 
@@ -99,13 +109,32 @@ export class NoteEditComponent {
     }
   }
 
+  cancelNoteCreation() {
+    this.deleteNote(this.note.id);
+  }
+
+  setNoteTitle() {
+    !this.note.title ? this.getUntitledNotePH() : this.note.title;
+  }
+
   createNote() {
+    this.setNoteTitle();
     this.noteService.createNote(this.note).subscribe(
+      data => {
+        this.note = data;
+      },
+      error => {
+        console.error("An error occurred while creating the note", error);
+      });
+  }
+
+  deleteNote(noteId: string) {
+    this.noteService.deleteNote(noteId).subscribe(
       data => {
         this.navigateToNotesPage();
       },
       error => {
-        console.error("An error occurred while creating the note", error);
+        console.error("An error occurred while updating the note", error);
       });
   }
 
@@ -120,9 +149,12 @@ export class NoteEditComponent {
   }
 
   saveNote() {
-    this.editMode ? this.updateNote(this.note) : this.createNote();
-    //TODO : AddTagsToUpdate if this.tags have new or removed tags
-    this.addTagsToUpdatedNote(this.tags);
+    if (this.editMode) {
+      this.updateNote(this.note);
+    }
+    this.createNote();
+    console.log("this.tags before addTagsToNote", JSON.stringify(this.tags));
+    this.addTagsToNote(this.tags);
   }
 
   navigateToNotesPage() {
@@ -147,7 +179,7 @@ export class NoteEditComponent {
   }
 
   showAddedToNotebookSnackbar(notebookName: string) {
-    this.translate.get("APP.NOTE_EDIT.NOTE_MOVED_TO_NOTEBOOK", { notebookName : notebookName }).subscribe(res => {
+    this.translate.get("APP.NOTE_EDIT.NOTE_MOVED_TO_NOTEBOOK", { notebookName: notebookName }).subscribe(res => {
       this.snackbarMessage = res;
     });
 
@@ -168,7 +200,10 @@ export class NoteEditComponent {
 
   createTag(tag: Tag) {
     this.tagsService.createTag(tag).subscribe(
-      data => { },
+      data => {
+        this.tag = data;
+        this.tags.push(this.tag);
+      },
       error => { console.error("An error occured while creating tag", error); }
     );
   }
@@ -181,16 +216,17 @@ export class NoteEditComponent {
   }
 
   addTagToNote(tag: Tag) {
+    console.log("addTagToNote : ", JSON.stringify(tag), JSON.stringify(this.note));
     this.tagsService.addTagToNote(tag.id, this.note.id).subscribe(
       data => { },
-      error => { console.error("An error occured while adding tag to Note", error); }
+      error => { console.error("An error occured while adding tag to note", error); }
     );
   }
 
-  addTagsToUpdatedNote(tags: Tag[]) {
-    if(tags.length > 0){
+  addTagsToNote(tags: Tag[]) {
+    if (tags.length > 0) {
       tags.forEach(tag => {
-          this.addTagToNote(tag);
+        this.addTagToNote(tag);
       });
     }
   }
@@ -211,10 +247,9 @@ export class NoteEditComponent {
 
       // Add tag
       if ((value || '').trim()) {
-        let tag = new Tag();
-        tag.name = value.trim();
-        this.tags.push(tag);
-        this.createTag(tag);
+        this.tag = new Tag();
+        this.tag.name = value.trim();
+        this.createTag(this.tag);
       }
 
       // Reset the input value
@@ -235,19 +270,18 @@ export class NoteEditComponent {
   removeTag(tag: Tag): void {
     const index = this.tags.indexOf(tag);
     if (index >= 0) {
-      this.editMode ? this.removeTagFromNote(tag) : this.deleteTag(tag.id);
       this.tags.splice(index, 1);
     }
   }
 
   private filterTagsForAutocomplete() {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
-          startWith(null),
-          map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+      startWith(null),
+      map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
   }
 
   private _filter(value: string): any[] {
-    if(typeof value === 'object') {
+    if (typeof value === 'object') {
       return;
     }
     return this.allTags.filter(tag => tag.name.toLowerCase().includes(value.toLowerCase()));

@@ -12,7 +12,8 @@
           "EDITOR_PH" : "Ecrivez votre contenu ici."
         },
         "NOTE_EDIT" : {
-          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ notebookName }}"
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note déplacée vers le carnet {{ notebookName }}",
+          "TITLE_PH" : "Donnez un titre à votre note"
         },
         "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Déplacer vers un carnet",

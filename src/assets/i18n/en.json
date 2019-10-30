@@ -12,7 +12,8 @@
           "EDITOR_PH" : "Note content here."
         },
         "NOTE_EDIT" : {
-          "NOTE_MOVED_TO_NOTEBOOK" : "Note moved to {{ notebookName }} notebook"
+          "NOTE_MOVED_TO_NOTEBOOK" : "Note moved to {{ notebookName }} notebook",
+          "TITLE_PH" : "Give a title to your note"
         },
         "SELECT_NOTEBOOK" : {
           "ADD_NOTE_TO_NOTEBOOK" : "Move to notebook",
