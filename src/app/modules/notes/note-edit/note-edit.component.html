@@ -1,16 +1,17 @@
 <div class="newNoteContainer">
-  <form #f="ngForm" (ngSubmit)="f.form.valid && saveNote()">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && updateNote(this.note)">
     <div>
       <input type="text" class="titlelnput form-control" placeholder="{{ 'APP.NOTE_EDIT.TITLE_PH' | translate }}"
         name="title" [(ngModel)]="note.title">
     </div>
+
     <div class="contentBody">
       <ckeditor [editor]="Editor" name="content" [(ngModel)]="note.content"></ckeditor>
     </div>
+
     <div class="noteActionsContainer">
       <button class="btn btn-primary" type="submit">{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
-      <button class="btn btn-warning"
-        (click)="cancelNoteCreation()">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</button>
+      <button class="btn btn-warning" type="button" (click)="cancelNote()">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</button>
 
       <app-notebooks-select *ngIf="editMode && notebooks" [selectNotebookPlaceholder]="selectNotebookPlaceholder"
         [notebooks]="notebooks" (selectNotebookEvent)="addNoteToNotebook($event)">

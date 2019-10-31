@@ -109,8 +109,8 @@ export class NoteEditComponent {
     }
   }
 
-  cancelNoteCreation() {
-    this.deleteNote(this.note.id);
+  cancelNote() {
+    this.editMode ? this.navigateToNotesPage() :  this.deleteNote(this.note.id);
   }
 
   setNoteTitle() {
@@ -139,6 +139,7 @@ export class NoteEditComponent {
   }
 
   updateNote(note: Note) {
+    note.tags = this.tags;
     this.noteService.updateNote(note).subscribe(
       data => {
         this.navigateToNotesPage();
@@ -146,15 +147,6 @@ export class NoteEditComponent {
       error => {
         console.error("An error occurred while updating the note", error);
       });
-  }
-
-  saveNote() {
-    if (this.editMode) {
-      this.updateNote(this.note);
-    }
-    this.createNote();
-    console.log("this.tags before addTagsToNote", JSON.stringify(this.tags));
-    this.addTagsToNote(this.tags);
   }
 
   navigateToNotesPage() {
@@ -213,22 +205,6 @@ export class NoteEditComponent {
       data => { },
       error => { console.error("An error occured while deleting tag", error); }
     );
-  }
-
-  addTagToNote(tag: Tag) {
-    console.log("addTagToNote : ", JSON.stringify(tag), JSON.stringify(this.note));
-    this.tagsService.addTagToNote(tag.id, this.note.id).subscribe(
-      data => { },
-      error => { console.error("An error occured while adding tag to note", error); }
-    );
-  }
-
-  addTagsToNote(tags: Tag[]) {
-    if (tags.length > 0) {
-      tags.forEach(tag => {
-        this.addTagToNote(tag);
-      });
-    }
   }
 
   removeTagFromNote(tag: Tag) {
