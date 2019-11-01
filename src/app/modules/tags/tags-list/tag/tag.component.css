@@ -1,14 +1,25 @@
 #tagItem {
     background-color: #2A3031;
     margin-top: 30px;
+    width : 180px;
+    height: 70px;
 }
 
-#tagItem input {
-    width: 80%;
-    background: transparent;
-    border: none;
-    color:whitesmoke;
-    text-align: center;
+.card-body {
+  padding: 1rem;
+}
+
+.card-body > div {
+  float : left;
+}
+
+.title {
+  width: 65%;
+  text-align: center;
+}
+
+a:first-child {
+  margin-left: 10px;
 }
 
 #tagItem a {

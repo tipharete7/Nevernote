@@ -27,13 +27,13 @@
         },
         "NOTEBOOKS" : {
             "NEW_NOTEBOOK" : "New Notebook",
-            "CONFIRM_UPDATE_NOTEBOOK" : "Are you sure you want to update this notebook ?",
+            "UPDATE_NOTEBOOK" : "Update notebook",
             "CONFIRM_DELETE_NOTEBOOK" : "Deleting {{ notebookName }} notebook will delete all it's notes !"
         },
         "TAGS" : {
             "NEW_TAG" : "New Tag",
             "FILTER_BY_TAG" : "Filter by tags",
-            "CONFIRM_UPDATE_TAG" : "Update this tag ?",
+            "UPDATE_TAG" : "Update tag",
             "CONFIRM_DELETE_TAG" : "Are you sure you want to delete {{ tagName }} ?"
         },
         "CONFIRMATION_DIALOG" : {

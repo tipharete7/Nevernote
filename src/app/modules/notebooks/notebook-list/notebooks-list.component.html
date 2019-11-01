@@ -7,7 +7,7 @@
   <div class="row">
     <ng-container class="rowsContainer" *ngFor="let notebook of notebooks; let i = index">
       <app-notebook [@notebooksAnim]="state" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 cards" [notebook]="notebook"
-        (notebookUpdateEvent)="updateNotebook($event)" (notebookDeleteEvent)="deleteNotebook($event)"></app-notebook>
+        (notebookUpdateEvent)="openUpdateNotebookDialog($event)" (notebookDeleteEvent)="deleteNotebook($event)"></app-notebook>
     </ng-container>
   </div>
 </div>

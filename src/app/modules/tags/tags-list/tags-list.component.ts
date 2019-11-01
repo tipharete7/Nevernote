@@ -1,9 +1,9 @@
-import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Router } from '@angular/router';
-import { TagService } from '../tags.service';
 import { Tag } from '../../../model/tag.model';
+import { TagService } from '../tags.service';
+import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './../../../shared/confirmation-dialog/confirmation-dialog.component';
 import { NewItemDialogComponent } from './../../../shared/new-item-dialog/new-item-dialog-component';
@@ -33,8 +33,8 @@ export class TagsListComponent implements OnInit {
   selectedtag: Tag;
   tagName: string;
   newTagTitle: string;
-  confirmUpdateMessage: string;
-  confirmDeleteMessage: string;
+  updateTagMessage: string;
+  confirmDeleteTagMessage: string;
 
   constructor(private router: Router, private tagService: TagService, public dialog: MatDialog,
     private translateService: TranslateService) {
@@ -43,6 +43,7 @@ export class TagsListComponent implements OnInit {
   ngOnInit() {
     this.getTags();
     this.setNewTagDialogPlaceholder();
+    this.setUpdateTagPlaceholder();
   }
 
   getTags() {
@@ -60,15 +61,15 @@ export class TagsListComponent implements OnInit {
     });
   }
 
-  setUpdateTagPlaceholder(tagName: string) {
-    this.translateService.get("APP.TAGS.CONFIRM_UPDATE_TAG", { tagName : tagName }).subscribe((res : string) => {
-       this.confirmUpdateMessage = res;
+  setUpdateTagPlaceholder() {
+    this.translateService.get("APP.TAGS.UPDATE_TAG").subscribe((res : string) => {
+       this.updateTagMessage = res;
     });
   }
 
   setDeleteTagPlaceholder(tagName: string) {
     this.translateService.get("APP.TAGS.CONFIRM_DELETE_TAG", { tagName : tagName }).subscribe((res: string) => {
-        this.confirmDeleteMessage =  res;
+        this.confirmDeleteTagMessage =  res;
     });
   }
 
@@ -104,7 +105,7 @@ export class TagsListComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '370',
       height: '130px',
-      data: this.confirmDeleteMessage
+      data: this.confirmDeleteTagMessage
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -120,25 +121,27 @@ export class TagsListComponent implements OnInit {
     });
   }
 
-  updateTag(tag: Tag) {
-    this.setUpdateTagPlaceholder(tag.name);
-
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
-      height: '120px',
-      data: this.confirmUpdateMessage
+  openUpdateTagDialog(tag: Tag){
+    const dialogRef = this.dialog.open(NewItemDialogComponent, {
+      width: '250px',
+      data: { title : this.updateTagMessage, itemName: tag.name }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.tagService.updateTag(tag).subscribe(
-          data => {
-          },
-          error => {
-            console.error("An error occurred while updating the tag", error);
-          });
+        tag.name = result;
+        this.updateTag(tag);
       }
     });
+  }
+
+  updateTag(tag: Tag) {
+    this.tagService.updateTag(tag).subscribe(
+      data => {
+      },
+      error => {
+        console.error("An error occurred while updating the tag", error);
+      });
   }
 
   state = 'active';

@@ -26,14 +26,14 @@
             "CONFIRM_DELETE_NOTE" : "Êtes-vous sûr de vouloir supprimer cette note ?"
         },
         "NOTEBOOKS" : {
-            "NEW_NOTEBOOK" : "Nouveau Carnet de Notes",
-            "CONFIRM_UPDATE_NOTEBOOK" : "Êtes-vous sûr de vouloir modifier ce carnet de notes ?",
+            "NEW_NOTEBOOK" : "Nouveau carnet de notes",
+            "UPDATE_NOTEBOOK" : "Modifier le carnet de notes",
             "CONFIRM_DELETE_NOTEBOOK" : "La suppression de {{ notebookName }} entraînera la suppression de tous ses notes !"
         },
         "TAGS" : {
             "NEW_TAG" : "Nouvelle Étiquette",
             "FILTER_BY_TAG" : "Filtrer par étiquettes",
-            "CONFIRM_UPDATE_TAG" : "Êtes-vous sûr de vouloir modifier cette étiquette ?",
+            "UPDATE_TAG" : "Modifier l'étiquette",
             "CONFIRM_DELETE_TAG" : "Êtes-vous sûr de vouloir supprimer {{ tagName }} ?"
         },
         "CONFIRMATION_DIALOG" : {

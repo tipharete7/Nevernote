@@ -38,7 +38,7 @@ export class NotebooksListComponent implements OnInit {
 
 
   constructor(private router: Router, private notebookService: NotebookService,
-     public dialog: MatDialog, private translateService: TranslateService) { }
+    public dialog: MatDialog, private translateService: TranslateService) { }
 
   ngOnInit() {
     this.getNotebooks();
@@ -46,20 +46,20 @@ export class NotebooksListComponent implements OnInit {
     this.setUpdateNotebookDialogMessage();
   }
 
-  setNewNotebookDialogPlaceholder(){
-    this.translateService.get("APP.NOTEBOOKS.NEW_NOTEBOOK").subscribe(res =>{
+  setNewNotebookDialogPlaceholder() {
+    this.translateService.get("APP.NOTEBOOKS.NEW_NOTEBOOK").subscribe(res => {
       this.newNotebookTitle = res;
     });
   }
 
-  setUpdateNotebookDialogMessage(){
-    this.translateService.get("APP.NOTEBOOKS.CONFIRM_UPDATE_NOTEBOOK").subscribe(res =>{
+  setUpdateNotebookDialogMessage() {
+    this.translateService.get("APP.NOTEBOOKS.UPDATE_NOTEBOOK").subscribe(res => {
       this.updateNotebookMessage = res;
     });
   }
 
-  setDeleteNotebookDialogMessage(notebookName: string){
-    this.translateService.get("APP.NOTEBOOKS.CONFIRM_DELETE_NOTEBOOK", { notebookName : notebookName }).subscribe(res =>{
+  setDeleteNotebookDialogMessage(notebookName: string) {
+    this.translateService.get("APP.NOTEBOOKS.CONFIRM_DELETE_NOTEBOOK", { notebookName: notebookName }).subscribe(res => {
       this.deleteNotebookMessage = res;
     });
   }
@@ -67,7 +67,7 @@ export class NotebooksListComponent implements OnInit {
   openNewNotebookDialog() {
     const dialogRef = this.dialog.open(NewItemDialogComponent, {
       width: '250px',
-      data: { title : this.newNotebookTitle, itemName: this.notebookName }
+      data: { title: this.newNotebookTitle, itemName: this.notebookName }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -116,22 +116,28 @@ export class NotebooksListComponent implements OnInit {
         );
       }
     });
-
   }
-  updateNotebook(notebook: Notebook) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '400px',
-      height: '170px',
-      data: this.updateNotebookMessage
+
+  openUpdateNotebookDialog(notebook: Notebook) {
+    const dialogRef = this.dialog.open(NewItemDialogComponent, {
+      width: '250px',
+      data: { title: this.updateNotebookMessage, itemName: notebook.name }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.notebookService.updateNotebook(notebook).subscribe(
-          data => {
-          },
-          error => { console.error("An error occurred while updating the notebook ", error); });
+        notebook.name = result;
+        this.updateNotebook(notebook);
       }
     });
+  }
+
+  updateNotebook(notebook: Notebook) {
+    this.notebookService.updateNotebook(notebook).subscribe(
+      data => {
+      },
+      error => { console.error("An error occurred while updating the notebook ", error);
+      });
   }
 
   state = 'active';
