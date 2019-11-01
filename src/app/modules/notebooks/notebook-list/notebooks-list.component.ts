@@ -42,6 +42,8 @@ export class NotebooksListComponent implements OnInit {
 
   ngOnInit() {
     this.getNotebooks();
+    this.setNewNotebookDialogPlaceholder();
+    this.setUpdateNotebookDialogMessage();
   }
 
   setNewNotebookDialogPlaceholder(){
@@ -63,8 +65,6 @@ export class NotebooksListComponent implements OnInit {
   }
 
   openNewNotebookDialog() {
-    this.setNewNotebookDialogPlaceholder();
-
     const dialogRef = this.dialog.open(NewItemDialogComponent, {
       width: '250px',
       data: { title : this.newNotebookTitle, itemName: this.notebookName }
@@ -119,8 +119,6 @@ export class NotebooksListComponent implements OnInit {
 
   }
   updateNotebook(notebook: Notebook) {
-    this.setUpdateNotebookDialogMessage();
-
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '400px',
       height: '170px',

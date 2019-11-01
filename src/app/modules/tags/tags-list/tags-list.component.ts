@@ -42,6 +42,7 @@ export class TagsListComponent implements OnInit {
 
   ngOnInit() {
     this.getTags();
+    this.setNewTagDialogPlaceholder();
   }
 
   getTags() {
@@ -72,8 +73,6 @@ export class TagsListComponent implements OnInit {
   }
 
   openNewTagDialog() {
-    this.setNewTagDialogPlaceholder();
-
     const dialogRef = this.dialog.open(NewItemDialogComponent, {
       width: '250px',
       data: { title: this.newTagTitle, itemName: this.tagName }
@@ -134,7 +133,6 @@ export class TagsListComponent implements OnInit {
       if (result) {
         this.tagService.updateTag(tag).subscribe(
           data => {
-            console.log(JSON.stringify(data));
           },
           error => {
             console.error("An error occurred while updating the tag", error);

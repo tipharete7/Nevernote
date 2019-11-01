@@ -7,7 +7,7 @@
             "TAGS" : "Étiquettes"
         },
         "NEW_NOTE" : {
-          "UNTITLED" : "Sans Titre",
+          "UNTITLED" : "Sans titre",
           "SAVE_NOTE" : "Enregistrer",
           "EDITOR_PH" : "Ecrivez votre contenu ici."
         },
@@ -22,7 +22,8 @@
         "ALL_NOTES" : {
             "NEW_NOTE" : "Nouvelle Note",
             "ZERO_NOTES" : "Aucune note à afficher",
-            "SEARCH_NOTES" : "Rechercher"
+            "SEARCH_NOTES" : "Rechercher",
+            "CONFIRM_DELETE_NOTE" : "Êtes-vous sûr de vouloir supprimer cette note ?"
         },
         "NOTEBOOKS" : {
             "NEW_NOTEBOOK" : "Nouveau Carnet de Notes",

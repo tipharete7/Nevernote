@@ -41,6 +41,7 @@ export class NotesListComponent implements OnInit {
   tags: Tag[] = [];
   selectNotebookPlaceholder: string;
   selectTagsPlaceholder: string;
+  deleteNoteMessage: string;
   selectedNote: Note;
   selectedNotebook : Notebook;
   selectedTag : Tag;
@@ -56,6 +57,7 @@ export class NotesListComponent implements OnInit {
     this.setSelectTagPlaceholder();
     this.getNotebooks();
     this.getTags();
+    this.setDeleteNoteDialogMessage();
   }
 
   setSelectNotebookPlaceholder(){
@@ -68,6 +70,12 @@ export class NotesListComponent implements OnInit {
     this.translateService.get("APP.TAGS.FILTER_BY_TAG").subscribe(res =>{
       this.selectTagsPlaceholder = res;
     })
+  }
+
+  setDeleteNoteDialogMessage() {
+    this.translateService.get("APP.ALL_NOTES.CONFIRM_DELETE_NOTE").subscribe(res =>{
+      this.deleteNoteMessage = res;
+    });
   }
 
   getNotes() {
@@ -90,9 +98,9 @@ export class NotesListComponent implements OnInit {
 
   deleteNote(note: Note) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '280px',
+      width: '380px',
       height: '120px',
-      data: 'Confirm note deletion ?'
+      data: this.deleteNoteMessage
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
