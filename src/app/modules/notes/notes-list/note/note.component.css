@@ -28,6 +28,10 @@
   visibility: visible;
 }
 
+.note-content {
+  height: 164px;
+  overflow: hidden;
+}
 
 .note-content p {
   color :rgb(230, 240, 210);

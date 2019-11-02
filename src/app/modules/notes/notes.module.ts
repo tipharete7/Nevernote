@@ -10,8 +10,9 @@ import { NoteService } from './notes.service';
 import { NotebookService } from './../notebooks/notebooks.service';
 import { TagService } from './../tags/tags.service';
 import { NotebooksSelectComponent } from './notes-list/notebooks-select/notebooks-select.component';
-import { SearchNotesPipe } from './notes-list/search-notes.pipe';
 import { TagsSelectComponent } from './notes-list/tags-select/tags-select.component';
+import { SearchNotesPipe } from './notes-list/search-notes.pipe';
+import { StripHtmlPipe } from './notes-list/strip-html.pipe';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent, SearchNotesPipe, TagsSelectComponent],
+  declarations: [NotesListComponent, NoteComponent, NoteEditComponent, NotebooksSelectComponent, SearchNotesPipe,
+     TagsSelectComponent, StripHtmlPipe],
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
