@@ -37,7 +37,7 @@
     "node-sass": "^4.14.1",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.5.5",
-    "tslib": "^1.12.0",
+    "tslib": "^1.13.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
@@ -51,13 +51,13 @@
     "codelyzer": "^5.2.2",
     "jasmine-core": "3.3.0",
     "jasmine-spec-reporter": "~4.2.0",
-    "karma": "^4.3.0",
+    "karma": "^5.0.5",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.4.3",
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "^5.4.2",
+    "protractor": "^7.0.0",
     "ts-node": "8.10.1",
     "tslint": "6.1.2",
     "typescript": "3.8.3"
