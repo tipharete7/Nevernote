@@ -23,7 +23,10 @@
             "NEW_NOTE" : "Nouvelle Note",
             "ZERO_NOTES" : "Aucune note à afficher",
             "SEARCH_NOTES" : "Rechercher",
-            "CONFIRM_DELETE_NOTE" : "Êtes-vous sûr de vouloir supprimer cette note ?"
+            "CONFIRM_DELETE_NOTE" : "Êtes-vous sûr de vouloir supprimer cette note ?",
+            "RECENT_NOTES" : "Plus récente",
+            "OLDEST_NOTES" : "Plus ancienne",
+            "NONE_SELECT_OPTION" : "Aucune"
         },
         "NOTEBOOKS" : {
             "NEW_NOTEBOOK" : "Nouveau carnet de notes",

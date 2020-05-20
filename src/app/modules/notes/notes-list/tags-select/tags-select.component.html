@@ -1,6 +1,7 @@
 <mat-form-field>
     <mat-label>{{selectTagsPlaceholder}}</mat-label>
     <mat-select (selectionChange)="selectTag()"  [(value)]="selectedTag" name="tag">
+      <mat-option>{{ 'APP.ALL_NOTES.NONE_SELECT_OPTION' | translate }}</mat-option>
       <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
     </mat-select>
 </mat-form-field>

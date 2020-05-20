@@ -1,6 +1,7 @@
 <mat-form-field class="moveToNotebookSelect">
   <mat-label>{{ selectNotebookPlaceholder }} </mat-label>
   <mat-select (selectionChange)="selectNotebook()" [(ngModel)]="selectedNotebook" name="notebookName">
+    <mat-option>{{ 'APP.ALL_NOTES.NONE_SELECT_OPTION' | translate }}</mat-option>
     <mat-option *ngFor="let notebook of notebooks" [value]="notebook">
       {{notebook.name}}
     </mat-option>

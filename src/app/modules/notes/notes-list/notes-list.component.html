@@ -1,34 +1,45 @@
 <div class="container">
-    <div class="floatingBtnDiv pull-right">
-      <button mat-icon-button color="accent" aria-label="New Note">
-        <mat-icon class="floatingBtn" [routerLink]="['/notes/new']">add</mat-icon>
-      </button>
+  <div class="floatingBtnDiv pull-right">
+    <button mat-icon-button color="accent" aria-label="New Note">
+      <mat-icon class="floatingBtn" [routerLink]="['/notes/new']">add</mat-icon>
+    </button>
+  </div>
+
+  <div class="row filterBar">
+    <div class="searchInput">
+      <mat-form-field>
+        <input matInput placeholder="{{ 'APP.ALL_NOTES.SEARCH_NOTES' | translate }}" [(ngModel)]="searchFilter"
+          name="searchFilter" autocomplete="off">
+      </mat-form-field>
     </div>
 
-    <div class="row filterBar">
-      <div class="searchInput">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{ 'APP.ALL_NOTES.SEARCH_NOTES' | translate }}" [(ngModel)]="searchQuery"
-            name="searchQuery" autocomplete="off">
-        </mat-form-field>
-      </div>
+    <div class="filterByDate">
+      <mat-form-field floatLabel="never">
+        <mat-label>Date</mat-label>
+        <mat-select [(ngModel)]="sortOrder" name="sortOrder">
+          <mat-option>{{ 'APP.ALL_NOTES.NONE_SELECT_OPTION' | translate }}</mat-option>
+          <mat-option value="newest">{{ 'APP.ALL_NOTES.RECENT_NOTES' | translate }}</mat-option>
+          <mat-option value="oldest">{{ 'APP.ALL_NOTES.OLDEST_NOTES' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-      <div>
-        <app-tags-select *ngIf="tags" [selectTagsPlaceholder]="selectTagsPlaceholder" [tags]="tags"
-          (selectTagEvent)="selectTag($event)">
-        </app-tags-select>
-      </div>
-      <div>
+    <div>
+      <app-tags-select *ngIf="tags" [selectTagsPlaceholder]="selectTagsPlaceholder" [tags]="tags"
+        (selectTagEvent)="selectTag($event)">
+      </app-tags-select>
+    </div>
+    <div>
       <app-notebooks-select *ngIf="notebooks" [selectNotebookPlaceholder]="selectNotebookPlaceholder"
         [notebooks]="notebooks" (selectNotebookEvent)="selectNotebook($event)">
-        </app-notebooks-select>
-      </div>
-    </div>
-
-    <div class="row">
-    <ng-container class="rowsContainer" *ngFor="let note of filteredNotes; let i = index">
-      <app-note [@notesAnim]="state" class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 cards" [note]="note"
-          (noteDeleteEvent)="deleteNote($event)"></app-note>
-      </ng-container>
+      </app-notebooks-select>
     </div>
   </div>
+
+  <div class="row">
+    <ng-container class="rowsContainer" *ngFor="let note of filteredNotes; let i = index">
+      <app-note [@notesAnim]="state" class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 cards" [note]="note"
+        (noteDeleteEvent)="deleteNote($event)"></app-note>
+    </ng-container>
+  </div>
+</div>
