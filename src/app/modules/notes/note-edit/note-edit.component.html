@@ -10,8 +10,8 @@
     </div>
 
     <div class="noteActionsContainer">
-      <button class="btn btn-primary" type="submit">{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
-      <button class="btn btn-warning" type="button" (click)="cancelNote()">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</button>
+      <button class="btn btn-primary btn-md" type="submit">{{ 'APP.NEW_NOTE.SAVE_NOTE' | translate }}</button>
+      <button class="btn btn-warning btn-md" type="button" (click)="cancelNote()">{{ 'APP.CONFIRMATION_DIALOG.CANCEL' | translate }}</button>
 
       <app-notebooks-select *ngIf="editMode && notebooks" [selectNotebookPlaceholder]="selectNotebookPlaceholder"
         [notebooks]="notebooks" (selectNotebookEvent)="addNoteToNotebook($event)">

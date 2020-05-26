@@ -19,7 +19,7 @@
 .contentBody {
   width: 90%;
   height: 90%;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-bottom: 1%;
 }
 
@@ -27,7 +27,11 @@
     border-color: rgb(245, 22, 22);
 }
 
-.tagsChip {
+button {
   margin-left : 2%;
+}
+
+.tagsChip {
+  margin-left : 3%;
   width : 30%;
 }

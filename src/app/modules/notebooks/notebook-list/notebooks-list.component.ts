@@ -29,7 +29,7 @@ import { ConfirmationDialogComponent } from './../../../shared/confirmation-dial
 })
 export class NotebooksListComponent implements OnInit {
 
-  notebooks: Notebook[] = [];
+  notebooks: Notebook[];
   selectedNotebook: Notebook;
   notebookName: string;
   newNotebookTitle: string;
