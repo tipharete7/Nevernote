@@ -44,7 +44,7 @@
           "CANCEL" : "Cancel"
         },
         "PAGE_NOT_FOUND" : {
-          "BODY" : "This is not the page that you're looking for, pal !"
+          "BODY" : "This is not the page you were looking for, pal !"
         }
     }
 }

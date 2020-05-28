@@ -26,18 +26,20 @@ export class NoteEditComponent {
 
   note: Note;
   tag: Tag;
-  editMode: boolean = false;
-  notebooks: Notebook[] = [];
+ 
+  notebooks: Notebook[];
+  allTags: Tag[];
+  tags: Tag[];
   selectNotebookPlaceholder: string;
   snackbarMessage: string;
   Editor = ClassicEditor;
+  editMode: boolean = false;
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  allTags: Tag[] = [];
-  tags: Tag[] = [];
+
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
 

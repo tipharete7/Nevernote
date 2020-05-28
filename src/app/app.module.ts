@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { NoteService } from './modules/notes/notes.service';
 import { NotebookService } from './modules/notebooks/notebooks.service';
 import { TagService } from './modules/tags/tags.service';
+import { HttpErrorHandler } from './config/http-error-handler.service';
 
 import { NotebooksModule } from './modules/notebooks/notebooks.module';
 import { TagsModule } from './modules/tags/tags.module';
@@ -45,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [ 
+    HttpErrorHandler
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
