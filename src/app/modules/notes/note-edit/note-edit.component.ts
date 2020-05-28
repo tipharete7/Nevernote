@@ -28,7 +28,7 @@ export class NoteEditComponent {
   tag: Tag;
  
   notebooks: Notebook[];
-  allTags: Tag[];
+  allTags: Tag[] = [];
   tags: Tag[];
   selectNotebookPlaceholder: string;
   snackbarMessage: string;
